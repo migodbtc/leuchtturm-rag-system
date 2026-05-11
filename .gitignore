@@ -1,0 +1,34 @@
+# GLOBAL SECURITY
+# Global-wide ignores necessary to keep the security of the project
+.env.local
+*.pem
+*.key
+
+# CHROMADB & DATA
+# Heavy data unneeded to be committed + secured in local repo only
+rag/chroma/
+rag/data/
+*.sqlite3
+*.bin
+
+# FASTAPI & PYTHON
+# Caches, virtual environments, coverage, etc
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.coverage
+
+# VITE, REACT, & TYPESCRIPT
+# Node modules, build artifacts, caches, etc
+node_modules/
+dist/
+build/
+.npm/
+npm-debug.log*
+
+# OPERATING SYSTEM GENERATED FILES
+.DS_Store
+Thumbs.db
