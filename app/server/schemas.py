@@ -34,3 +34,16 @@ operations.
 class AccessToken(BaseModel):
     access_token: str
     token_type: str
+
+"""
+DeleteUserRequest: Schema for deleting a user by username.
+"""
+class DeleteUserRequest(BaseModel):
+    username: str
+
+"""
+DeleteUserResponse: Response for delete user operation.
+"""
+class DeleteUserResponse(BaseModel):
+    message: str
+    deleted_user_id: int

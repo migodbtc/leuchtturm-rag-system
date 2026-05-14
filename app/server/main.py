@@ -2,6 +2,7 @@
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.future import select
 from typing import Annotated
 
@@ -9,7 +10,7 @@ from typing import Annotated
 from database import get_db 
 from auth import get_password_hash, verify_password, create_access_token, decode_token
 from models import User
-from schemas import UserCreate, UserResponse, AccessToken
+from schemas import UserCreate, UserResponse, AccessToken, DeleteUserRequest, DeleteUserResponse
 
 app = FastAPI()
 
@@ -69,10 +70,20 @@ async def process_register(
     
     try:
         await db.commit()
-        await db.refresh(new_user)      # Optional refresh, useful for getting new ID
+        await db.refresh(new_user)      
+    # Duplicate email or username exception
+    except IntegrityError:
+        await db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST, 
+            detail="Username or email already registered"
+        )
     except Exception as e:
         await db.rollback()
-        raise HTTPException(status_code=400, detail="Registration failed (e.g., username/email taken)")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, 
+            detail="An unexpected error occurred"
+        )
     
     # response: the data of the new user (without the password as UserResponse)
     return new_user
@@ -100,6 +111,27 @@ async def process_login(
     
     access_token = create_access_token(data={"sub": str(user.id)})
     return {"access_token": access_token, "token_type": "bearer"}
+
+"""
+process_delete_user: deletes a user by username.
+- Response model is MessageResponse in schemas.py
+"""
+@app.delete("/auth/delete", response_model=DeleteUserResponse)
+async def process_delete_user(
+    payload: DeleteUserRequest,
+    db: AsyncSession = Depends(get_db)
+):
+    result = await db.execute(select(User).where(User.username == payload.username))
+    user = result.scalars().first()
+
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+
+    deleted_user_id = user.id
+    await db.delete(user)
+    await db.commit()
+
+    return {"message": f"User '{payload.username}' deleted", "deleted_user_id": deleted_user_id}
 
 @app.get('/')
 def root():

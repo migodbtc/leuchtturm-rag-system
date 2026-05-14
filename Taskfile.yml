@@ -6,3 +6,8 @@ tasks:
     dir: app/server
     cmds:
       - poetry run uvicorn main:app --reload
+
+  yellowpad:test:
+    dir: app/server
+    cmds:
+      - poetry run pytest -v
