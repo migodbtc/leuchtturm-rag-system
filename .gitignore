@@ -20,6 +20,10 @@ venv/
 env/
 .pytest_cache/
 .coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
 
 # VITE, REACT, & TYPESCRIPT
 # Node modules, build artifacts, caches, etc
