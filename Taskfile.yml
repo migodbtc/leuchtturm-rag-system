@@ -1,8 +1,8 @@
 version: '3'
 
 tasks:
-  # Secondary Application
-  app:dev:
+  # Yellowpad Commands
+  yellowpad:dev:
     dir: app/server
     cmds:
       - poetry run uvicorn main:app --reload

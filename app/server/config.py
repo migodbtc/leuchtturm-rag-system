@@ -1,3 +1,4 @@
+import os
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import computed_field
 from sqlalchemy.engine import URL
@@ -9,6 +10,13 @@ as well as a Config class to detect the virtual environment
 """
 class Settings(BaseSettings):
 
+    """
+    AUTHENTICATION SECURITY: for auth.py encryption and decryption to protect
+    passwords and such.
+    """
+    SECRET_KEY: str = os.getenv("SECRET_KEY", "your-super-secret-key-for-mvp-only")
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
     """
     MYSQL CONSTANTS: needed in order to properly concatenate the dynamic URL 
