@@ -2,6 +2,12 @@ version: '3'
 
 tasks:
   # Yellowpad Commands
+  yellowpad:dev:
+    desc: "Start both the FastAPI server and Next.js client concurrently."
+    deps:
+      - task: yellowpad:server:dev
+      - task: yellowpad:client:dev
+
   yellowpad:client:dev:
     desc: "Start up the Nextjs development server with custom port"
     dir: app/web
