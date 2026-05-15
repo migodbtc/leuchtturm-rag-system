@@ -1,16 +1,28 @@
 
-"use client"
+"use client";
 
+import { useState } from "react";
 import { Search, Plus, NotepadText } from "lucide-react";
 import { NotepadCard } from "./_components/NotepadCard";
+import { NewNotepadModal } from "./_components/NewNotepadModal";
 import { MOCK_NOTEPADS } from "./constants";
+import type { NotepadCardData } from "./constants";
 
 export default function NotesPage() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [notepads, setNotepads] = useState<NotepadCardData[]>(MOCK_NOTEPADS);
+
+  function handleCreate(data: NotepadCardData) {
+    setNotepads((prev) => [data, ...prev]);
+  }
+
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-8">
       {/* ── Page header ── */}
       <section className="flex flex-col gap-2">
-        <h1 className="text-3xl font-semibold text-amber-800 flex flex-row gap-2 items-center"><NotepadText className="text-amber-300"/> Notepads</h1>
+        <h1 className="text-3xl font-semibold text-amber-800 flex flex-row gap-2 items-center">
+          <NotepadText className="text-amber-300" /> Notepads
+        </h1>
         <p className="text-sm text-slate-600">
           See your notepads here, along with its contents
         </p>
@@ -27,7 +39,10 @@ export default function NotesPage() {
           />
         </div>
 
-        <button className="h-10 px-4 bg-amber-200 text-amber-900 rounded-lg font-semibold text-sm flex items-center gap-2 hover:cursor-pointer hover:bg-amber-300 transition uppercase">
+        <button
+          onClick={() => setModalOpen(true)}
+          className="h-10 px-4 bg-amber-200 text-amber-900 rounded-lg font-semibold text-sm flex items-center gap-2 hover:cursor-pointer hover:bg-amber-300 transition uppercase"
+        >
           <Plus size={16} />
           New Notepad
         </button>
@@ -35,7 +50,7 @@ export default function NotesPage() {
 
       {/* ── Notepad grid ── */}
       <section className="w-full grid grid-cols-3 gap-4 mb-2">
-        {MOCK_NOTEPADS.map((notepad) => (
+        {notepads.map((notepad) => (
           <NotepadCard
             key={notepad.id}
             notepad={notepad}
@@ -44,6 +59,13 @@ export default function NotesPage() {
           />
         ))}
       </section>
+
+      {/* ── New Notepad Modal ── */}
+      <NewNotepadModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onSubmit={handleCreate}
+      />
     </div>
   );
 }

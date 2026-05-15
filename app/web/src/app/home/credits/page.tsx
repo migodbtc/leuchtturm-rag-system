@@ -119,31 +119,35 @@ export default function CreditsPage() {
             Migo, as well as Communeye Software, would like to give credit to
             the group in charge of the development of that project.
           </p>
-          <table className="mt-2 w-full text-sm text-gray-700 border-separate border-spacing-y-2">
+          <table className="mt-2 w-full table-fixed text-sm text-gray-700 border-separate border-spacing-y-2">
             <tbody>
               <tr>
-                <td className="p-0 font-bold text-black">Isaiah Wayne Foz</td>
-                <td className="p-0 text-right">Developer</td>
+                <td className="p-0 w-1/2 font-bold text-black">Lance Kennedy Nafarrete</td>
+                <td className="p-0 w-1/2 text-right">
+                  Team Lead · Frontend Dev · UI/UX Design · Database Architect
+                </td>
               </tr>
               <tr>
-                <td className="p-0 font-bold text-black">
-                  Lance Kennedy Nafarrete
+                <td className="p-0 w-1/2 font-bold text-black">Isaiah Wayne Foz</td>
+                <td className="p-0 text-right">
+                  Backend Dev · Flex Dev
                 </td>
-                <td className="p-0 text-right">Developer</td>
+              </tr>
+              <tr>
+                <td className="p-0 w-1/2 font-bold text-black">Joeren Formento</td>
+                <td className="p-0 w-1/2 text-right">Documentation</td>
               </tr>
               <tr>
                 <td className="p-0 font-bold text-black">
                   Keith Morgan San Andres
                 </td>
-                <td className="p-0 text-right">Developer</td>
+                <td className="p-0 w-1/2 text-right">QA / Consultant</td>
               </tr>
               <tr>
-                <td className="p-0 font-bold text-black">Joeren Formento</td>
-                <td className="p-0 text-right">Developer</td>
-              </tr>
-              <tr>
-                <td className="p-0 font-bold text-black">Stephen Menguito</td>
-                <td className="p-0 text-right">Developer</td>
+                <td className="p-0 w-1/2 font-bold text-black">Stephen Menguito</td>
+                <td className="p-0 w-1/2 text-right">
+                  Dailies Dev · Relax Engineer
+                </td>
               </tr>
             </tbody>
           </table>

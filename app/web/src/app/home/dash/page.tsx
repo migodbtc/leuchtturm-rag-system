@@ -68,7 +68,7 @@ export default function DashboardPage() {
           <p className="text-sm text-gray-600">
             Your notepads in comparison to all existing notepads
           </p>
-          <div className="mt-2 flex-1">
+          <div className="mt-2 w-full" style={{ height: 220 }}>
             <ResponsiveContainer width="100%" height="100%">
               <RechartsPieChart>
                 <Pie

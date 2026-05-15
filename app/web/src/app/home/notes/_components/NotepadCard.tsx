@@ -1,16 +1,20 @@
-import { Eye, Trash2, NotepadText, type LucideIcon } from "lucide-react";
+import { Eye, Trash2, NotepadText } from "lucide-react";
 
 // ─── TaskItem ────────────────────────────────────────────────────────────────
 
 export interface TaskItemData {
-  /** A Lucide icon component for the task */
-  icon: LucideIcon;
   /** Display label */
   label: string;
   /** Whether the task has been checked off */
   checked: boolean;
   /** Optional flag: marks the item as high-priority */
   flagged?: boolean;
+  /**
+   * Rendering mode:
+   * - `"checkbox"` — shows an amber checkbox indicator on the right
+   * - `"list"`     — shows a plain bullet dot on the left, no checkbox
+   */
+  mode: "checkbox" | "list";
 }
 
 interface TaskItemProps {
@@ -18,12 +22,36 @@ interface TaskItemProps {
 }
 
 function TaskItem({ task }: TaskItemProps) {
-  const IconComponent = task.icon;
-
   return (
-    <li className="flex items-center gap-2 text-sm text-amber-900 group">
-      {/* Leading icon */}
-      <IconComponent size={15} className="text-amber-700 shrink-0" />
+    <li className="flex items-center gap-2 text-sm text-amber-900">
+      {/* Leading indicator */}
+      {task.mode === "list" ? (
+        // Plain bullet for list mode
+        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" aria-hidden />
+      ) : (
+        // Amber checkbox for checkbox mode
+        <span
+          className={[
+            "w-3.5 h-3.5 rounded border flex items-center justify-center transition-colors shrink-0",
+            task.checked
+              ? "border-amber-600 bg-amber-500"
+              : "border-amber-400 bg-transparent",
+          ].join(" ")}
+          aria-label={task.checked ? "Completed" : "Pending"}
+        >
+          {task.checked && (
+            <svg viewBox="0 0 10 8" fill="none" className="w-2 h-2" aria-hidden="true">
+              <path
+                d="M1 4l2.5 2.5L9 1"
+                stroke="white"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+        </span>
+      )}
 
       {/* Label — crossed out when checked */}
       <span
@@ -37,44 +65,13 @@ function TaskItem({ task }: TaskItemProps) {
         {task.label}
       </span>
 
-      {/* Trailing flags */}
-      <span className="flex items-center gap-1 shrink-0">
-        {/* Priority flag */}
-        {task.flagged && (
-          <span
-            title="Flagged"
-            className="inline-block w-1.5 h-1.5 rounded-full bg-red-400"
-          />
-        )}
-
-        {/* Checkbox indicator */}
+      {/* Priority flag dot */}
+      {task.flagged && (
         <span
-          className={[
-            "w-3.5 h-3.5 rounded border flex items-center justify-center transition-colors",
-            task.checked
-              ? "border-amber-600 bg-amber-500"
-              : "border-amber-400 bg-transparent",
-          ].join(" ")}
-          aria-label={task.checked ? "Completed" : "Pending"}
-        >
-          {task.checked && (
-            <svg
-              viewBox="0 0 10 8"
-              fill="none"
-              className="w-2 h-2"
-              aria-hidden="true"
-            >
-              <path
-                d="M1 4l2.5 2.5L9 1"
-                stroke="white"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          )}
-        </span>
-      </span>
+          title="Flagged"
+          className="inline-block w-1.5 h-1.5 rounded-full bg-red-400 shrink-0"
+        />
+      )}
     </li>
   );
 }
