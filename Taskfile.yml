@@ -2,12 +2,20 @@ version: '3'
 
 tasks:
   # Yellowpad Commands
-  yellowpad:dev:
+  yellowpad:client:dev:
+    desc: "Start up the Nextjs development server with custom port"
+    dir: app/web
+    cmds: 
+      - pnpm dev -p 3001
+
+  yellowpad:server:dev:
+    desc: "Start the development FastAPI uvicorn server."
     dir: app/server
     cmds:
       - poetry run uvicorn main:app --reload
 
-  yellowpad:test:
+  yellowpad:server:test:
+    desc: "Run the preestablished server tests for quality assurance (testing environment is under tests/)."
     dir: app/server
     cmds:
       - poetry run pytest -v

@@ -25,13 +25,15 @@ htmlcov/
 .mypy_cache/
 .ruff_cache/
 
-# VITE, REACT, & TYPESCRIPT
-# Node modules, build artifacts, caches, etc
+# NEXT.JS, VITE, REACT, & TYPESCRIPT
+# Node modules, build artifacts, caches, package setup files, etc
 node_modules/
 dist/
 build/
+.next/
 .npm/
 npm-debug.log*
+.turbo/
 
 # OPERATING SYSTEM GENERATED FILES
 .DS_Store
