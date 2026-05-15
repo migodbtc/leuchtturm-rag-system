@@ -51,7 +51,7 @@ function HomeShell({ children }: { children: ReactNode }) {
             </button>
           </header>
 
-          <main className="h-[calc(100vh-5rem)] overflow-y-auto bg-gray-50">
+          <main className="h-[calc(100vh-5rem)] overflow-y-auto bg-gray-100">
             {children}
           </main>
         </div>

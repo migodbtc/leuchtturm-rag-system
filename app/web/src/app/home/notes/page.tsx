@@ -1,7 +1,7 @@
 
 "use client"
 
-import { Search, Plus } from "lucide-react";
+import { Search, Plus, NotepadText } from "lucide-react";
 import { NotepadCard } from "./_components/NotepadCard";
 import { MOCK_NOTEPADS } from "./constants";
 
@@ -10,7 +10,7 @@ export default function NotesPage() {
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-8">
       {/* ── Page header ── */}
       <section className="flex flex-col gap-2">
-        <h1 className="text-3xl font-semibold text-amber-900">My Notepads</h1>
+        <h1 className="text-3xl font-semibold text-amber-800 flex flex-row gap-2 items-center"><NotepadText className="text-amber-300"/> Notepads</h1>
         <p className="text-sm text-slate-600">
           See your notepads here, along with its contents
         </p>
