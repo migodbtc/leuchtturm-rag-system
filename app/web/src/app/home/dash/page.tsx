@@ -61,14 +61,14 @@ export default function DashboardPage() {
       </section>
 
       <section className="w-full grid sm:grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="rounded-lg border border-slate-300 bg-white p-5 h-84 flex flex-col  gap-2">
+        <div className="rounded-lg border border-slate-300 bg-white p-5 h-[21rem] flex flex-col  gap-2">
           <h1 className="w-full text-lg uppercase font-semibold text-black flex flex-row gap-2 items-center">
             <PieChart className="text-amber-600" /> Notepad Chart
           </h1>
           <p className="text-sm text-gray-600">
             Your notepads in comparison to all existing notepads
           </p>
-          <div className="mt-2 w-full" style={{ height: 220 }}>
+          <div className="mt-2" style={{ minWidth: 0, height: 220 }}>
             <ResponsiveContainer width="100%" height="100%">
               <RechartsPieChart>
                 <Pie

@@ -1,19 +1,36 @@
-
 "use client";
 
 import { useState } from "react";
 import { Search, Plus, NotepadText } from "lucide-react";
 import { NotepadCard } from "./_components/NotepadCard";
 import { NewNotepadModal } from "./_components/NewNotepadModal";
+import { NotepadModal } from "./_components/NotepadModal";
 import { MOCK_NOTEPADS } from "./constants";
-import type { NotepadCardData } from "./constants";
-
+import type { NotepadCardData } from "./types";
+/**
+ * NotesPage: a page component containing the search bar for the notes, the new notepad
+ * button & modal, and the index of all existing notepads pertaining to the current
+ * authenticated user.
+ *
+ * @returns A proper NotesPage with all notes and components rendered successfully
+ */
 export default function NotesPage() {
-  const [modalOpen, setModalOpen] = useState(false);
+  // Modal states
+  const [createModalOpen, setCreateModalOpen] = useState<boolean>(false);
+  const [viewModalOpen, setViewModalOpen] = useState<boolean>(false);
+  const [selectedNotepad, setSelectedNotepad] =
+    useState<NotepadCardData | null>(null);
+
   const [notepads, setNotepads] = useState<NotepadCardData[]>(MOCK_NOTEPADS);
 
   function handleCreate(data: NotepadCardData) {
     setNotepads((prev) => [data, ...prev]);
+  }
+
+  function handleView(id: string) {
+    const found = notepads.find((item) => item.id === id) || null;
+    setSelectedNotepad(found);
+    setViewModalOpen(true);
   }
 
   return (
@@ -40,7 +57,7 @@ export default function NotesPage() {
         </div>
 
         <button
-          onClick={() => setModalOpen(true)}
+          onClick={() => setCreateModalOpen(true)}
           className="h-10 px-4 bg-amber-200 text-amber-900 rounded-lg font-semibold text-sm flex items-center gap-2 hover:cursor-pointer hover:bg-amber-300 transition uppercase"
         >
           <Plus size={16} />
@@ -54,7 +71,7 @@ export default function NotesPage() {
           <NotepadCard
             key={notepad.id}
             notepad={notepad}
-            onView={(id) => console.log("view", id)}
+            onView={handleView}
             onDelete={(id) => console.log("delete", id)}
           />
         ))}
@@ -62,9 +79,16 @@ export default function NotesPage() {
 
       {/* ── New Notepad Modal ── */}
       <NewNotepadModal
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
+        open={createModalOpen}
+        onClose={() => setCreateModalOpen(false)}
         onSubmit={handleCreate}
+      />
+
+      {/* ── View Notepad Modal ── */}
+      <NotepadModal
+        open={viewModalOpen}
+        notepad={selectedNotepad}
+        onClose={() => setViewModalOpen(false)}
       />
     </div>
   );
