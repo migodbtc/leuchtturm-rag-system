@@ -10,6 +10,7 @@ import { authHeaders } from "@/utils/auth";
 import { API_BASE } from "@/utils/api";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/utils/motion";
+import NotepadDeleteModal from "./_components/NotepadDeleteModal";
 
 /**
  *  NotesPage: Page containing the catalog of the notepads ASSOCIATED
@@ -22,6 +23,7 @@ import { containerVariants, itemVariants } from "@/utils/motion";
 export default function NotesPage() {
   const [createModalOpen, setCreateModalOpen] = useState<boolean>(false);
   const [viewModalOpen, setViewModalOpen] = useState<boolean>(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
   const [selectedNotepad, setSelectedNotepad] = useState<Notepad | null>(null);
   const [notepads, setNotepads] = useState<Notepad[]>([]);
 
@@ -170,7 +172,10 @@ export default function NotesPage() {
           err.detail ?? `Failed to delete notepad (${res.status})`,
         );
       }
+
+      // post api request
       setNotepads((prev) => prev.filter((n) => n.id !== id));
+      setDeleteModalOpen(false);
     } catch (e) {
       setActionError(
         e instanceof Error ? e.message : "Unexpected error deleting notepad.",
@@ -284,8 +289,11 @@ export default function NotesPage() {
             <NotepadCard
               key={notepad.id}
               notepad={notepad}
+              setSelectedNotepad={setSelectedNotepad}
               onView={handleView}
-              onDelete={handleDelete}
+              onDelete={() => {
+                setDeleteModalOpen(true);
+              }}
             />
           ))
         )}
@@ -305,6 +313,20 @@ export default function NotesPage() {
         onClose={() => setViewModalOpen(false)}
         onSubmit={handleUpdate}
       />
+
+      {/* notepad/delete modal */}
+      {selectedNotepad && (
+        <NotepadDeleteModal
+          open={deleteModalOpen}
+          notepad={selectedNotepad}
+          onClose={() => {
+            setDeleteModalOpen(false);
+          }}
+          onClick={() => {
+            handleDelete(selectedNotepad?.id);
+          }}
+        />
+      )}
     </motion.div>
   );
 }

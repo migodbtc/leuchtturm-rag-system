@@ -3,6 +3,7 @@ import type { Notepad, Task } from "../types";
 import { TaskStatusIndicator } from "./TaskStatusIndicator";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/utils/motion";
+import { Dispatch, SetStateAction } from "react";
 
 // ─── TaskItem ────────────────────────────────────────────────────────────────
 
@@ -48,11 +49,17 @@ function TaskItem({ task }: TaskItemProps) {
 
 interface NotepadCardProps {
   notepad: Notepad;
+  setSelectedNotepad: Dispatch<SetStateAction<Notepad | null>>;
   onView?: (id: number) => void;
-  onDelete?: (id: number) => void;
+  onDelete: () => void;
 }
 
-export function NotepadCard({ notepad, onView, onDelete }: NotepadCardProps) {
+export function NotepadCard({
+  notepad,
+  setSelectedNotepad,
+  onView,
+  onDelete,
+}: NotepadCardProps) {
   const completedCount = notepad.tasks.filter((t) => t.checked).length;
   const totalCount = notepad.tasks.length;
 
@@ -78,7 +85,10 @@ export function NotepadCard({ notepad, onView, onDelete }: NotepadCardProps) {
             <Eye size={15} />
           </button>
           <button
-            onClick={() => onDelete?.(notepad.id)}
+            onClick={() => {
+              setSelectedNotepad(notepad);
+              onDelete();
+            }}
             className="cursor-pointer p-1 text-amber-700 hover:bg-amber-200 rounded transition"
             title="Delete notepad"
             aria-label={`Delete ${notepad.title}`}
