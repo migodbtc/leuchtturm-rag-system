@@ -170,8 +170,6 @@ async def handle_notepad_index(
     title: str = Query(default="")
 ):
     
-    logger.info(f"Title: {title}")
-
     query = select(Notepad).where((Notepad.user_id == current_user.id)).options(selectinload(Notepad.tasks)).offset(skip).limit(limit)
 
     if title != "": 
@@ -179,7 +177,16 @@ async def handle_notepad_index(
 
     result = await db.execute(query)   
 
-    return result.scalars().all()
+    data = result.scalars().all()
+
+    for np in data:
+        if np.title == "Grocery List":
+            for task in np.tasks:
+                logger.info(f"Task no ${task.id}; Checked=${task.checked}")
+        else: 
+            continue
+
+    return data
 
 """
 handle_notepad_create: creates a new notepad (with optional initial tasks) for 
@@ -239,6 +246,10 @@ async def handle_notepad_select(
 
     if notepad.user_id != current_user.id:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Access denied")
+    
+    if notepad.title == "Grocery List":
+        for task in notepad.tasks:
+            logger.info(f"Task no ${task.id}; Checked=${task.checked}")
 
     return notepad
 
@@ -281,8 +292,9 @@ async def handle_notepad_update(
         
         task_instance = Task(
             label=task_info.label,
-            checked=task_info.flagged,
+            checked=task_info.checked,
             mode=task_info.mode,
+            flagged=task_info.flagged
         )
         
         current.tasks.append(task_instance)

@@ -1,5 +1,5 @@
 import { Eye, Trash2, NotepadText } from "lucide-react";
-import type { Notepad, Task } from "../types";
+import type { Notepad, Task, TaskMode } from "../types";
 import { TaskStatusIndicator } from "./TaskStatusIndicator";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/utils/motion";
@@ -26,10 +26,8 @@ function TaskItem({ task }: TaskItemProps) {
       <span
         className={[
           "flex-1 leading-snug",
-          task.checked ? "line-through opacity-40" : "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
+          task.checked == true ? "line-through opacity-40" : "",
+        ].join(" ")}
       >
         {task.label}
       </span>
@@ -99,7 +97,7 @@ export function NotepadCard({
       </div>
 
       {/* ── Task list ── */}
-      <div className="flex-1 overflow-y-auto px-4 py-3 min-h-0">
+      <div className="flex-1 overflow-y-hidden px-4 py-3 min-h-0">
         {notepad.tasks.length === 0 ? (
           <p className="text-xs text-amber-600 italic">No tasks yet.</p>
         ) : (

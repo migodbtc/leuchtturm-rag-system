@@ -425,8 +425,6 @@ export function NotepadModal({
       ),
     };
 
-    console.log("[NotepadModal] handleSubmit payload:", payload);
-
     onSubmit(payload);
   }, [initialNotepad, titleState.value, draftTasks]);
 
@@ -765,16 +763,16 @@ export function NotepadModal({
             >
               Close
             </button>
+            <button
+              type="button"
+              onClick={handleFooterReset}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-amber-800 hover:bg-amber-200 transition uppercase border border-amber-300 cursor-pointer"
+            >
+              <RotateCcw size={13} aria-hidden />
+              Reset
+            </button>
             {hasChanges && (
               <>
-                <button
-                  type="button"
-                  onClick={handleFooterReset}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-amber-800 hover:bg-amber-200 transition uppercase border border-amber-300 cursor-pointer"
-                >
-                  <RotateCcw size={13} aria-hidden />
-                  Reset
-                </button>
                 <button
                   type="button"
                   onClick={handleSubmit}

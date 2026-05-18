@@ -41,11 +41,11 @@ const NotepadDeleteModal = ({
           <p className="w-full h-full py-4 flex flex-col gap-2 justify-center items-center text-amber-800 font-semibold text-md">
             <ShieldQuestionMark size={36} />
             <span className="uppercase">Delete notepad?</span>
-            <div className="max-w-xs font-normal text-justify ">
+            <p className="max-w-xs font-normal text-justify ">
               Are you sure you want to delete the list titled `{notepad.title}`?
               In this list, you still have {notepad.tasks.length} tasks assigned
               written down on {new Date(notepad.created_at).toDateString()}.
-            </div>
+            </p>
           </p>
         </div>
 

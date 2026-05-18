@@ -1,9 +1,10 @@
 "use client";
 
+import { Check } from "lucide-react";
 import { Task, TaskMode } from "../types";
 
 interface TaskStatusIndicatorProps {
-  mode: TaskMode
+  mode: TaskMode;
   checked: boolean;
   showCheck?: boolean;
   className?: string;
@@ -31,7 +32,9 @@ export function TaskStatusIndicator({
 
   const base = [
     "w-3.5 h-3.5 rounded border shrink-0 flex items-center justify-center",
-    checked ? "border-amber-600 bg-amber-500" : "border-amber-400 bg-transparent",
+    checked
+      ? "border-amber-600 bg-amber-500"
+      : "border-amber-400 bg-transparent",
     onClick ? "cursor-pointer hover:opacity-80 transition-opacity" : "",
     className,
   ]
@@ -49,45 +52,16 @@ export function TaskStatusIndicator({
         aria-pressed={checked}
       >
         {checked && showCheck && (
-          <svg
-            viewBox="0 0 10 8"
-            fill="none"
-            className="w-2 h-2"
-            aria-hidden="true"
-          >
-            <path
-              d="M1 4l2.5 2.5L9 1"
-              stroke="white"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <Check size={8} strokeWidth={2.5} className="w-2 h-2 text-white" />
         )}
       </button>
     );
   }
 
   return (
-    <span
-      className={base}
-      aria-label={checked ? "Completed" : "Pending"}
-    >
+    <span className={base} aria-label={checked ? "Completed" : "Pending"}>
       {checked && showCheck && (
-        <svg
-          viewBox="0 0 10 8"
-          fill="none"
-          className="w-2 h-2"
-          aria-hidden="true"
-        >
-          <path
-            d="M1 4l2.5 2.5L9 1"
-            stroke="white"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <Check size={8} strokeWidth={2.5} className="w-2 h-2 text-white" />
       )}
     </span>
   );

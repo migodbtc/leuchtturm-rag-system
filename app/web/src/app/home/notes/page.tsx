@@ -8,6 +8,7 @@ import {
   AlertCircle,
   Loader2,
   RotateCcw,
+  NotepadTextDashed,
 } from "lucide-react";
 import { NotepadCard } from "./_components/NotepadCard";
 import { NewNotepadModal } from "./_components/NewNotepadModal";
@@ -61,6 +62,7 @@ export default function NotesPage() {
       }
 
       const data: Notepad[] = await res.json();
+
       setNotepads(data);
     } catch (e) {
       setPageError(
@@ -245,7 +247,7 @@ export default function NotesPage() {
 
       {/* ── Search + action bar ── */}
       <motion.section
-        className="w-full h-auto flex flex-row gap-4 text-gray-400 items-center justify-between"
+        className="w-full h-auto flex flex-row gap-2 text-gray-400 items-center justify-between"
         variants={containerVariants}
       >
         <motion.div
@@ -255,7 +257,7 @@ export default function NotesPage() {
           <Search size={18} className="text-gray-400" />
           <input
             type="text"
-            placeholder="Search notepads..."
+            placeholder="Search notepads via title..."
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setSearchTitle(e.target.value)
             }
@@ -266,24 +268,22 @@ export default function NotesPage() {
 
         <motion.button
           variants={itemVariants}
-          className="flex flex-row justify-center align-middle items-center gap-2 h-10 px-4 bg-white border border-slate-300 rounded-lg font-semibold text-sm uppercase text-slate-500 cursor-pointer hover:bg-slate-100"
+          className="flex flex-row justify-center align-middle items-center gap-2 h-10 px-2 bg-white border border-slate-300 rounded-lg font-semibold text-sm uppercase text-slate-500 cursor-pointer hover:bg-slate-100"
           onClick={() => handleIndex(0, 21, searchTitle)}
         >
           <Search size={18} />
-          Search
         </motion.button>
 
         {searchTitle != "" && (
           <motion.button
             variants={itemVariants}
-            className="flex flex-row justify-center align-middle items-center gap-2 h-10 px-4 bg-white border border-slate-300 rounded-lg font-semibold text-sm uppercase text-slate-500 cursor-pointer hover:bg-slate-100"
+            className="flex flex-row justify-center align-middle items-center gap-2 h-10 px-2 bg-white border border-slate-300 rounded-lg font-semibold text-sm uppercase text-slate-500 cursor-pointer hover:bg-slate-100"
             onClick={async () => {
               setSearchTitle("");
               handleIndex();
             }}
           >
             <RotateCcw size={18} />
-            Reset
           </motion.button>
         )}
 
@@ -292,8 +292,8 @@ export default function NotesPage() {
           className="h-10 px-4 bg-amber-200 text-amber-900 rounded-lg font-semibold text-sm flex items-center gap-2 hover:cursor-pointer hover:bg-amber-300 transition uppercase"
           variants={itemVariants}
         >
-          <Plus size={16} />
-          New Notepad
+          <NotepadText size={16} />
+          New
         </motion.button>
       </motion.section>
 
