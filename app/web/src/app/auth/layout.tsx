@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import type { ReactNode } from 'react';
-import { motion } from 'framer-motion';
-import { Copyright } from 'lucide-react';
+import type { ReactNode } from "react";
+import { motion } from "framer-motion";
+import { Copyright } from "lucide-react";
+import { containerVariants, itemVariants } from "@/utils/motion";
 
 type AuthLayoutProps = {
   children: ReactNode;
@@ -18,19 +19,6 @@ type AuthLayoutProps = {
  * @returns {React.ReactNode} Centered auth card
  */
 export default function AuthLayout({ children }: AuthLayoutProps) {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.14, delayChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 14 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-  };
-
   return (
     <motion.div
       className="flex min-h-screen w-full flex-col items-center justify-center bg-gray-50 px-6 py-12 font-sans"
@@ -48,7 +36,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
             <span
               className="bg-clip-text text-transparent"
               style={{
-                backgroundImage: 'linear-gradient(to right, #ac7414, #ffe500)'
+                backgroundImage: "linear-gradient(to right, #ac7414, #ffe500)",
               }}
             >
               YELLOWPAD

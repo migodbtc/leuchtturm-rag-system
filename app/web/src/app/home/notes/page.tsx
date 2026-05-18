@@ -8,6 +8,8 @@ import { NotepadModal } from "./_components/NotepadModal";
 import type { Notepad, Task } from "./types";
 import { authHeaders } from "@/utils/auth";
 import { API_BASE } from "@/utils/api";
+import { motion } from "framer-motion";
+import { containerVariants, itemVariants } from "@/utils/motion";
 
 /**
  *  NotesPage: Page containing the catalog of the notepads ASSOCIATED
@@ -177,20 +179,28 @@ export default function NotesPage() {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-8">
+    <motion.div
+      className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-8"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {/* ── Page header ── */}
-      <section className="flex flex-col gap-2">
+      <motion.section className="flex flex-col gap-2" variants={itemVariants}>
         <h1 className="text-3xl font-semibold text-amber-800 flex flex-row gap-2 items-center">
           <NotepadText className="text-amber-300" /> Notepads
         </h1>
         <p className="text-sm text-slate-600">
           See your notepads here, along with its contents
         </p>
-      </section>
+      </motion.section>
 
       {/* ── Page-level error (index failure) ── */}
       {pageError && (
-        <div className="flex items-center gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <motion.div
+          className="flex items-center gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+          variants={itemVariants}
+        >
           <AlertCircle size={16} className="shrink-0" />
           <span>{pageError}</span>
           <button
@@ -199,12 +209,15 @@ export default function NotesPage() {
           >
             Retry
           </button>
-        </div>
+        </motion.div>
       )}
 
       {/* ── Action-level error (create / view / delete failure) ── */}
       {actionError && (
-        <div className="flex items-center gap-3 rounded-lg border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-700">
+        <motion.div
+          className="flex items-center gap-3 rounded-lg border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-700"
+          variants={itemVariants}
+        >
           <AlertCircle size={16} className="shrink-0" />
           <span>{actionError}</span>
           <button
@@ -213,43 +226,59 @@ export default function NotesPage() {
           >
             Dismiss
           </button>
-        </div>
+        </motion.div>
       )}
 
       {/* ── Search + action bar ── */}
-      <section className="w-full h-auto flex flex-row gap-4 text-gray-400 items-center justify-between">
-        <div className="flex items-center gap-2 flex-1 h-10 bg-white rounded-lg px-3 hover:cursor-pointer border border-slate-300">
+      <motion.section
+        className="w-full h-auto flex flex-row gap-4 text-gray-400 items-center justify-between"
+        variants={containerVariants}
+      >
+        <motion.div
+          className="flex items-center gap-2 flex-1 h-10 bg-white rounded-lg px-3 hover:cursor-pointer border border-slate-300"
+          variants={itemVariants}
+        >
           <Search size={18} className="text-gray-400" />
           <input
             type="text"
             placeholder="Search notepads..."
             className="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400 hover:cursor-pointer"
           />
-        </div>
+        </motion.div>
 
-        <button
+        <motion.button
           onClick={() => setCreateModalOpen(true)}
           className="h-10 px-4 bg-amber-200 text-amber-900 rounded-lg font-semibold text-sm flex items-center gap-2 hover:cursor-pointer hover:bg-amber-300 transition uppercase"
+          variants={itemVariants}
         >
           <Plus size={16} />
           New Notepad
-        </button>
-      </section>
+        </motion.button>
+      </motion.section>
 
       {/* ── Notepad grid ── */}
-      <section className="w-full grid grid-cols-3 gap-4 mb-2">
+      <motion.section
+        className="w-full grid grid-cols-3 gap-4 mb-2"
+        variants={containerVariants}
+      >
         {loading ? (
-          <div className="col-span-3 flex items-center justify-center gap-2 py-16 text-amber-600">
+          <motion.div
+            className="col-span-3 flex items-center justify-center gap-2 py-16 text-amber-600"
+            variants={containerVariants}
+          >
             <Loader2 size={20} className="animate-spin" />
             <span className="text-sm font-medium">Loading notepads…</span>
-          </div>
+          </motion.div>
         ) : notepads.length === 0 && !pageError ? (
-          <div className="col-span-3 flex flex-col items-center justify-center py-16 text-slate-400 gap-2">
+          <motion.div
+            className="col-span-3 flex flex-col items-center justify-center py-16 text-slate-400 gap-2"
+            variants={containerVariants}
+          >
             <NotepadText size={32} className="opacity-30" />
-            <p className="text-sm">
+            <motion.p className="text-sm" variants={itemVariants}>
               No notepads yet. Create one to get started.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         ) : (
           notepads.map((notepad) => (
             <NotepadCard
@@ -260,7 +289,7 @@ export default function NotesPage() {
             />
           ))
         )}
-      </section>
+      </motion.section>
 
       {/* ── New Notepad Modal ── */}
       <NewNotepadModal
@@ -276,6 +305,6 @@ export default function NotesPage() {
         onClose={() => setViewModalOpen(false)}
         onSubmit={handleUpdate}
       />
-    </div>
+    </motion.div>
   );
 }

@@ -1,6 +1,8 @@
 import { Eye, Trash2, NotepadText } from "lucide-react";
 import type { Notepad, Task } from "../types";
 import { TaskStatusIndicator } from "./TaskStatusIndicator";
+import { motion } from "framer-motion";
+import { containerVariants, itemVariants } from "@/utils/motion";
 
 // ─── TaskItem ────────────────────────────────────────────────────────────────
 
@@ -55,7 +57,10 @@ export function NotepadCard({ notepad, onView, onDelete }: NotepadCardProps) {
   const totalCount = notepad.tasks.length;
 
   return (
-    <div className="rounded-xl bg-amber-100 aspect-square flex flex-col overflow-hidden">
+    <motion.div
+      className="rounded-xl bg-amber-100 aspect-square flex flex-col overflow-hidden"
+      variants={containerVariants}
+    >
       {/* ── Header ── */}
       <div className="w-full h-16 border-b border-amber-300 flex flex-row items-center justify-between px-4 shrink-0">
         <h3 className="text-sm font-semibold text-amber-900 truncate uppercase flex flex-row gap-2 items-center min-w-0">
@@ -115,6 +120,6 @@ export function NotepadCard({ notepad, onView, onDelete }: NotepadCardProps) {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

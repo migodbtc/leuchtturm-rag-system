@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Lock, LogIn, User, CheckCircle, AlertCircle, X } from "lucide-react";
 import { loginAction } from "../actions";
+import { itemVariants, containerVariants } from "@/utils/motion";
 
 /**
  * LoginPage: Authentication page for user login.
@@ -60,19 +61,6 @@ export default function LoginPage() {
         {pending ? "Signing in..." : "Sign In"}
       </motion.button>
     );
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.05 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 14 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
   };
 
   return (

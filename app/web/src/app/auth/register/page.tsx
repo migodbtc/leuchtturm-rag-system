@@ -14,6 +14,7 @@ import {
   X,
 } from "lucide-react";
 import { registerAction } from "../actions";
+import { itemVariants, containerVariants } from "@/utils/motion";
 
 /**
  * RegisterPage: Authentication page for user registration.
@@ -59,19 +60,6 @@ export default function RegisterPage() {
         {pending ? "Creating account..." : "Create Account"}
       </motion.button>
     );
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.05 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 14 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
   };
 
   return (
