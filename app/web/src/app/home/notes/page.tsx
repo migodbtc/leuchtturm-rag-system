@@ -63,6 +63,16 @@ export default function NotesPage() {
 
       const data: Notepad[] = await res.json();
 
+      for (let notepad of data) {
+        notepad.tasks.sort((x, y) => {
+          if (x.flagged && !y.flagged) return -1; // x is flagged, y is not -> x goes first
+          if (!x.flagged && y.flagged) return 1; // y is flagged, x is not -> y goes first
+          return 0; // if neither, do nothing
+
+          //fml bruh
+        });
+      }
+
       setNotepads(data);
     } catch (e) {
       setPageError(

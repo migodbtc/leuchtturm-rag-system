@@ -1,4 +1,4 @@
-import { Eye, Trash2, NotepadText } from "lucide-react";
+import { Eye, Trash2, NotepadText, FlagIcon } from "lucide-react";
 import type { Notepad, Task, TaskMode } from "../types";
 import { TaskStatusIndicator } from "./TaskStatusIndicator";
 import { motion } from "framer-motion";
@@ -36,8 +36,10 @@ function TaskItem({ task }: TaskItemProps) {
       {task.flagged && (
         <span
           title="Flagged"
-          className="inline-block w-1.5 h-1.5 rounded-full bg-red-400 shrink-0"
-        />
+          className="inline-block rounded-full bg-red-400 shrink-0 text-sm px-2 py-0.5"
+        >
+          <FlagIcon size={15} className="text-red-900" />
+        </span>
       )}
     </li>
   );
