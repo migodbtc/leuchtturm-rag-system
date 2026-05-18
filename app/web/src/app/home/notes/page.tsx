@@ -1,36 +1,144 @@
 "use client";
 
-import { useState } from "react";
-import { Search, Plus, NotepadText } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { Search, Plus, NotepadText, AlertCircle, Loader2 } from "lucide-react";
 import { NotepadCard } from "./_components/NotepadCard";
 import { NewNotepadModal } from "./_components/NewNotepadModal";
 import { NotepadModal } from "./_components/NotepadModal";
-import { MOCK_NOTEPADS } from "./constants";
-import type { NotepadCardData } from "./types";
+import type { Notepad, Task } from "./types";
+import { authHeaders } from "@/utils/auth";
+import { API_BASE } from "@/utils/api";
+
 /**
- * NotesPage: a page component containing the search bar for the notes, the new notepad
- * button & modal, and the index of all existing notepads pertaining to the current
- * authenticated user.
+ *  NotesPage: Page containing the catalog of the notepads ASSOCIATED
+ *  WITH THE CURRENT USER ONLY, along with the features such as adding new
+ *  notepad, viewing/selecting single notepads, editing/deletion, etc.
  *
- * @returns A proper NotesPage with all notes and components rendered successfully
+ *  @component
+ *  @returns {JSX.Element}
  */
 export default function NotesPage() {
-  // Modal states
   const [createModalOpen, setCreateModalOpen] = useState<boolean>(false);
   const [viewModalOpen, setViewModalOpen] = useState<boolean>(false);
-  const [selectedNotepad, setSelectedNotepad] =
-    useState<NotepadCardData | null>(null);
+  const [selectedNotepad, setSelectedNotepad] = useState<Notepad | null>(null);
+  const [notepads, setNotepads] = useState<Notepad[]>([]);
 
-  const [notepads, setNotepads] = useState<NotepadCardData[]>(MOCK_NOTEPADS);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [pageError, setPageError] = useState<string | null>(null);
+  const [actionError, setActionError] = useState<string | null>(null);
 
-  function handleCreate(data: NotepadCardData) {
-    setNotepads((prev) => [data, ...prev]);
+  // handleIndex: useCallback which contains the sending of the request to the
+  // FastAPI's handle_notepad_index route (see main.py). On success, data is stored
+  // on notepads, and on failure, pageError value is defined with API error message.
+  const handleIndex = useCallback(async (skip = 0, limit = 21) => {
+    setLoading(true);
+    setPageError(null);
+
+    try {
+      const res = await fetch(
+        `${API_BASE}/notepads?skip=${skip}&limit=${limit}`,
+        {
+          headers: authHeaders(),
+        },
+      );
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(
+          err.detail ?? `Failed to load notepads (${res.status})`,
+        );
+      }
+      const data: Notepad[] = await res.json();
+      setNotepads(data);
+    } catch (e) {
+      setPageError(
+        e instanceof Error ? e.message : "Unexpected error loading notepads.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  // handleIndex/useEffect: Effect which loads the index on initial load. Once fetched,
+  // the index itself will load properly or return an error case.
+  useEffect(() => {
+    handleIndex();
+  }, [handleIndex]);
+
+  // ── handleCreate ─────────────────────────────────────────────────────────────
+  async function handleCreate(title: string, tasks: Task[]) {
+    setActionError(null);
+    try {
+      const res = await fetch(`${API_BASE}/notepads`, {
+        method: "POST",
+        headers: authHeaders(),
+        body: JSON.stringify({
+          title,
+          tasks: tasks.map((t) => ({
+            label: t.label.trim(),
+            checked: t.checked,
+            flagged: t.flagged,
+            mode: t.mode,
+          })),
+        }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(
+          err.detail ?? `Failed to create notepad (${res.status})`,
+        );
+      }
+      const created: Notepad = await res.json();
+      setNotepads((prev) => [created, ...prev]);
+      setCreateModalOpen(false);
+    } catch (e) {
+      setActionError(
+        e instanceof Error ? e.message : "Unexpected error creating notepad.",
+      );
+    }
   }
 
-  function handleView(id: string) {
-    const found = notepads.find((item) => item.id === id) || null;
-    setSelectedNotepad(found);
-    setViewModalOpen(true);
+  // ── handleView ───────────────────────────────────────────────────────────────
+  async function handleView(id: number) {
+    setActionError(null);
+    try {
+      const res = await fetch(`${API_BASE}/notepads/${id}`, {
+        headers: authHeaders(),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.detail ?? `Failed to load notepad (${res.status})`);
+      }
+      const notepad: Notepad = await res.json();
+      setSelectedNotepad(notepad);
+      setViewModalOpen(true);
+    } catch (e) {
+      setActionError(
+        e instanceof Error ? e.message : "Unexpected error loading notepad.",
+      );
+    }
+  }
+
+  // ── handleDelete ─────────────────────────────────────────────────────────────
+  async function handleDelete(id: number) {
+    setActionError(null);
+    try {
+      const res = await fetch(`${API_BASE}/notepads/${id}`, {
+        method: "DELETE",
+        headers: authHeaders(),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(
+          err.detail ?? `Failed to delete notepad (${res.status})`,
+        );
+      }
+      setNotepads((prev) => prev.filter((n) => n.id !== id));
+    } catch (e) {
+      setActionError(
+        e instanceof Error ? e.message : "Unexpected error deleting notepad.",
+      );
+    }
   }
 
   return (
@@ -44,6 +152,34 @@ export default function NotesPage() {
           See your notepads here, along with its contents
         </p>
       </section>
+
+      {/* ── Page-level error (index failure) ── */}
+      {pageError && (
+        <div className="flex items-center gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          <AlertCircle size={16} className="shrink-0" />
+          <span>{pageError}</span>
+          <button
+            onClick={() => handleIndex()}
+            className="ml-auto text-xs font-semibold underline hover:no-underline cursor-pointer"
+          >
+            Retry
+          </button>
+        </div>
+      )}
+
+      {/* ── Action-level error (create / view / delete failure) ── */}
+      {actionError && (
+        <div className="flex items-center gap-3 rounded-lg border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-700">
+          <AlertCircle size={16} className="shrink-0" />
+          <span>{actionError}</span>
+          <button
+            onClick={() => setActionError(null)}
+            className="ml-auto text-xs font-semibold underline hover:no-underline cursor-pointer"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
 
       {/* ── Search + action bar ── */}
       <section className="w-full h-auto flex flex-row gap-4 text-gray-400 items-center justify-between">
@@ -67,14 +203,28 @@ export default function NotesPage() {
 
       {/* ── Notepad grid ── */}
       <section className="w-full grid grid-cols-3 gap-4 mb-2">
-        {notepads.map((notepad) => (
-          <NotepadCard
-            key={notepad.id}
-            notepad={notepad}
-            onView={handleView}
-            onDelete={(id) => console.log("delete", id)}
-          />
-        ))}
+        {loading ? (
+          <div className="col-span-3 flex items-center justify-center gap-2 py-16 text-amber-600">
+            <Loader2 size={20} className="animate-spin" />
+            <span className="text-sm font-medium">Loading notepads…</span>
+          </div>
+        ) : notepads.length === 0 && !pageError ? (
+          <div className="col-span-3 flex flex-col items-center justify-center py-16 text-slate-400 gap-2">
+            <NotepadText size={32} className="opacity-30" />
+            <p className="text-sm">
+              No notepads yet. Create one to get started.
+            </p>
+          </div>
+        ) : (
+          notepads.map((notepad) => (
+            <NotepadCard
+              key={notepad.id}
+              notepad={notepad}
+              onView={handleView}
+              onDelete={handleDelete}
+            />
+          ))
+        )}
       </section>
 
       {/* ── New Notepad Modal ── */}

@@ -1,18 +1,35 @@
 # Third-party Libraries
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Depends, HTTPException, status, Query
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.future import select
+from sqlalchemy.orm import selectinload
 from typing import Annotated
+from dotenv import load_dotenv
+import os
 
 # Application Modules
 from database import get_db 
 from auth import get_password_hash, verify_password, create_access_token, decode_token
-from models import User
-from schemas import UserCreate, UserResponse, AccessToken, DeleteUserRequest, DeleteUserResponse
+from models import User, Notepad, Task
+from schemas import (
+    UserCreate, UserResponse, AccessToken, DeleteUserRequest, DeleteUserResponse,
+    NotepadCreate, NotepadResponse, NotepadDeleteResponse,
+)
+
+load_dotenv()
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[os.getenv("NEXT_PUBLIC_BASE_URL", "http://localhost:3001")],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # This tells FastAPI where to look for the token
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
@@ -133,6 +150,114 @@ async def process_delete_user(
 
     return {"message": f"User '{payload.username}' deleted", "deleted_user_id": deleted_user_id}
 
+"""
+handle_notepad_index: Returns a paginated list of all notepads belonging to 
+the authenticated user.
+  - skip (int, default 0): offset for pagination
+  - limit (int, default 21): max records to return per page
+"""
+@app.get("/notepads", response_model=list[NotepadResponse])
+async def handle_notepad_index(
+    current_user: Annotated[User, Depends(get_current_user)],
+    db: AsyncSession = Depends(get_db),
+    skip: int = Query(default=0, ge=0),
+    limit: int = Query(default=21, ge=1, le=100),
+):
+    result = await db.execute(
+        select(Notepad)
+        .where(Notepad.user_id == current_user.id)
+        .options(selectinload(Notepad.tasks))
+        .offset(skip)
+        .limit(limit)
+    )
+    return result.scalars().all()
+
+"""
+handle_notepad_create: creates a new notepad (with optional initial tasks) for 
+the authenticated user. Title and tasks come from the request body (NotepadCreate schema).
+- id, user_id, and timestamps are assigned server-side
+"""
+@app.post("/notepads", response_model=NotepadResponse, status_code=status.HTTP_201_CREATED)
+async def handle_notepad_create(
+    payload: NotepadCreate,
+    current_user: Annotated[User, Depends(get_current_user)],
+    db: AsyncSession = Depends(get_db),
+):
+    new_notepad = Notepad(user_id=current_user.id, title=payload.title)
+    db.add(new_notepad)
+    await db.flush()
+
+    for task_data in payload.tasks:
+        db.add(Task(notepad_id=new_notepad.id, **task_data.model_dump()))
+
+    try:
+        await db.commit()
+        await db.refresh(new_notepad)
+    except Exception:
+        await db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to create notepad"
+        )
+
+    result = await db.execute(
+        select(Notepad)
+        .where(Notepad.id == new_notepad.id)
+        .options(selectinload(Notepad.tasks))
+    )
+    return result.scalars().first()
+
+"""
+handle_notepad_select: returns a single notepad (with its tasks) belonging to the 
+authenticated user. Returns 404 if the notepad does not exist, and 403 if the notepad 
+belongs to a different user
+"""
+@app.get("/notepads/{notepad_id}", response_model=NotepadResponse)
+async def handle_notepad_select(
+    notepad_id: int,
+    current_user: Annotated[User, Depends(get_current_user)],
+    db: AsyncSession = Depends(get_db),
+):
+    result = await db.execute(
+        select(Notepad)
+        .where(Notepad.id == notepad_id)
+        .options(selectinload(Notepad.tasks))
+    )
+    notepad = result.scalars().first()
+
+    if not notepad:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Notepad not found")
+
+    if notepad.user_id != current_user.id:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Access denied")
+
+    return notepad
+
+"""
+handle_notepad_delete: deletes a notepad (and its tasks via cascade) for the authenticated user.
+Returns 404 if the notepad does not exist, 403 if the notepad belongs to a different user
+"""
+@app.delete("/notepads/{notepad_id}", response_model=NotepadDeleteResponse)
+async def handle_delete(
+    notepad_id: int,
+    current_user: Annotated[User, Depends(get_current_user)],
+    db: AsyncSession = Depends(get_db),
+):
+    result = await db.execute(select(Notepad).where(Notepad.id == notepad_id))
+    notepad = result.scalars().first()
+
+    if not notepad:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Notepad not found")
+
+    if notepad.user_id != current_user.id:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Access denied")
+
+    await db.delete(notepad)
+    await db.commit()
+
+    return {"message": f"Notepad {notepad_id} deleted", "deleted_notepad_id": notepad_id}
+
 @app.get('/')
 def root():
     return {"message": "Welcome to FastAPI!"}
+

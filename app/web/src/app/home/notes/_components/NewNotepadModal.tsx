@@ -1,249 +1,75 @@
-/**
- * @file NewNotepadModal.tsx
- * @description Modal dialog for creating a new notepad with a dynamic task list.
- */
-
 "use client";
 
+import { useState, useReducer, useEffect, useCallback, memo } from "react";
 import {
-  useState,
-  useReducer,
-  useEffect,
-  useCallback,
-  memo,
-} from "react";
-import {
-  X,
-  Plus,
-  Trash2,
-  Flag,
-  List,
-  CheckSquare,
-  NotepadText,
-  RotateCcw,
-  Send,
-  Info,
+  X, Plus, Trash2, Flag, List, CheckSquare,
+  NotepadText, RotateCcw, Send, Info,
 } from "lucide-react";
-import type { NotepadCardData, TaskItemData } from "../types";
-import { TaskStatusIndicator } from "./TaskStatusIndicator";
+import type { Notepad, Task, TaskMode } from "../types";
+import { TaskRow } from "./NewNotepadTask";
 
-// ─── DraftTask ────────────────────────────────────────────────────────────────
+// ### DRAFT REDUCER ###
 
-/**
- * Working copy of a task being edited inside the modal.
- * Maps 1-to-1 with `TaskItemData` once submitted, minus the stable `id` key.
- */
-interface DraftTask {
-  id: string;
-  label: string;
-  checked: boolean;
-  flagged: boolean;
-  mode: "checkbox" | "list";
-}
+// DraftState: Made from picking Notepad's title and tasks property for modal-only purposes
+// DraftActions: Possible draft actions in order to modify the draft reducer (see below)
+type DraftState = Pick<Notepad, 'title' | 'tasks'>;
+type DraftActions =
+  | { type: "SET_TITLE"; title: string }
+  | { type: "ADD_TASK" }
+  | { type: "UPDATE_TASK"; index: number; task: Task }
+  | { type: "REMOVE_TASK"; index: number }
+  | { type: "RESET" };
 
-/** Returns a fresh, empty DraftTask with a unique stable id. */
-const blankTask = (): DraftTask => ({
-  id: crypto.randomUUID(),
+// INITIAL_STATE: The initial state of the modal before any changes are updated.
+const INITIAL_STATE: DraftState = { title: "", tasks: [] };
+
+// emptyTask: An empty task, usually for initializing a new task.
+const emptyTask = (): Task => ({
+  id: 0,
+  notepad_id: 0,
   label: "",
   checked: false,
   flagged: false,
   mode: "checkbox",
 });
 
-function hasDraftChanges(state: ModalState) {
+function isTaskDirty(task: Task): boolean {
+  return task.label.trim() !== "" ;
+}
+
+function isDirty(state: DraftState): boolean {
   if (state.title.trim() !== "") return true;
-  if (state.tasks.length !== 1) return true;
-  const base = state.tasks[0];
-  return (
-    base.label.trim() !== "" ||
-    base.checked ||
-    base.flagged ||
-    base.mode !== "checkbox"
-  );
+  
+  return state.tasks.some(isTaskDirty);
 }
 
-// ─── Modal state — useReducer ─────────────────────────────────────────────────
-
-interface ModalState {
-  title: string;
-  tasks: DraftTask[];
-}
-
-type ModalAction =
-  | { type: "SET_TITLE"; title: string }
-  | { type: "ADD_TASK" }
-  | { type: "UPDATE_TASK"; index: number; task: DraftTask }
-  | { type: "REMOVE_TASK"; index: number }
-  | { type: "RESET" };
-
-const INITIAL_STATE: ModalState = { title: "", tasks: [blankTask()] };
-
-/**
- * Pure reducer for the modal form.
- * All state mutations live here for easy tracing and testing.
- */
-function modalReducer(state: ModalState, action: ModalAction): ModalState {
+function draftReducer(state: DraftState, action: DraftActions): DraftState {
   switch (action.type) {
-    case "SET_TITLE":
-      return { ...state, title: action.title };
-    case "ADD_TASK":
-      return { ...state, tasks: [...state.tasks, blankTask()] };
-    case "UPDATE_TASK":
-      return {
-        ...state,
-        tasks: state.tasks.map((t, i) =>
-          i === action.index ? action.task : t,
-        ),
-      };
-    case "REMOVE_TASK":
-      return {
-        ...state,
-        tasks: state.tasks.filter((_, i) => i !== action.index),
-      };
-    case "RESET":
-      return { title: "", tasks: [blankTask()] };
-    default:
-      return state;
+    case "SET_TITLE":    return { ...state, title: action.title };
+    case "ADD_TASK":     return { ...state, tasks: [...state.tasks, emptyTask()] };
+    case "UPDATE_TASK":  return { ...state, tasks: state.tasks.map((t, i) => i === action.index ? action.task : t) };
+    case "REMOVE_TASK":  return { ...state, tasks: state.tasks.filter((_, i) => i !== action.index) };
+    case "RESET":        return { title: "", tasks: [] };
+    default:             return state;
   }
 }
 
-// ─── TaskRow ──────────────────────────────────────────────────────────────────
-
-interface TaskRowProps {
-  task: DraftTask;
-  onChange: (updated: DraftTask) => void;
-  onRemove: () => void;
-}
-
-const TaskRow = memo(function TaskRow({
-  task,
-  onChange,
-  onRemove,
-}: TaskRowProps) {
-  const handleLabelChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) =>
-      onChange({ ...task, label: e.target.value }),
-    [task, onChange],
-  );
-
-  /** Toggling to list mode always resets checked state. */
-  const handleModeToggle = useCallback(
-    () =>
-      onChange({
-        ...task,
-        mode: task.mode === "checkbox" ? "list" : "checkbox",
-        // reset completion when leaving checkbox mode
-        checked: task.mode === "checkbox" ? false : task.checked,
-      }),
-    [task, onChange],
-  );
-
-  const handleCheckToggle = useCallback(
-    () => onChange({ ...task, checked: !task.checked }),
-    [task, onChange],
-  );
-
-  const handleFlagToggle = useCallback(
-    () => onChange({ ...task, flagged: !task.flagged }),
-    [task, onChange],
-  );
-
-  return (
-    <li className="flex items-center gap-2 group py-2 bg-amber-100 border-b border-amber-300">
-      {/* Left indicator — clicks toggle checked (only active in checkbox mode) */}
-      <TaskStatusIndicator
-        mode={task.mode}
-        checked={task.checked}
-        onClick={task.mode === "checkbox" ? handleCheckToggle : undefined}
-      />
-
-      {/* Label input */}
-      <input
-        type="text"
-        value={task.label}
-        onChange={handleLabelChange}
-        placeholder="Task description…"
-        className={[
-          "flex-1 bg-transparent outline-none text-sm text-amber-900 placeholder-amber-600 min-w-0",
-          task.checked ? "line-through opacity-40" : "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
-        aria-label="Task description"
-      />
-
-      {/* Mode toggle: checkbox ↔ list */}
-      <button
-        type="button"
-        onClick={handleModeToggle}
-        title={
-          task.mode === "checkbox"
-            ? "Switch to list item"
-            : "Switch to checkbox"
-        }
-        aria-pressed={task.mode === "checkbox"}
-        className={[
-          "p-1.5 rounded-md transition cursor-pointer",
-          task.mode === "checkbox"
-            ? "text-amber-600 hover:bg-amber-200"
-            : "text-amber-600 hover:bg-amber-200",
-        ].join(" ")}
-      >
-        {task.mode === "checkbox" ? (
-          <CheckSquare size={13} />
-        ) : (
-          <List size={13} />
-        )}
-      </button>
-
-      {/* Flag toggle */}
-      <button
-        type="button"
-        onClick={handleFlagToggle}
-        title={task.flagged ? "Remove flag" : "Flag as priority"}
-        aria-pressed={task.flagged}
-        className={[
-          "p-1.5 rounded-md transition cursor-pointer",
-          task.flagged
-            ? "bg-red-100 text-red-500"
-            : "text-amber-600 hover:bg-amber-200",
-        ].join(" ")}
-      >
-        <Flag size={13} />
-      </button>
-
-      {/* Remove */}
-      <button
-        type="button"
-        onClick={onRemove}
-        title="Remove task"
-        aria-label="Remove task"
-        className="p-1.5 rounded-md text-amber-600 hover:bg-red-100 hover:text-red-500 cursor-pointer transition"
-      >
-        <Trash2 size={13} />
-      </button>
-    </li>
-  );
-});
-
-// ─── NewNotepadModal ──────────────────────────────────────────────────────────
 
 interface NewNotepadModalProps {
   open: boolean;
   onClose: () => void;
-  onSubmit: (data: NotepadCardData) => void;
+  onSubmit: (title: string, tasks: Task[]) => void;
 }
 
-export function NewNotepadModal({
-  open,
-  onClose,
-  onSubmit,
-}: NewNotepadModalProps) {
-  const [state, dispatch] = useReducer(modalReducer, INITIAL_STATE);
-  /** Inline validation message shown when submit conditions aren't met. */
+export function NewNotepadModal({ open, onClose, onSubmit }: NewNotepadModalProps) {
+
+  // State variables: useReducer contains the earlier draft reducer configurations,
+  // while validation error exists for UI rendering + error callbacks.
+  const [state, dispatch] = useReducer(draftReducer, INITIAL_STATE);
   const [validationError, setValidationError] = useState<string | null>(null);
 
-  /** Reset form each time the modal opens. */
+  // Reset Effect: Reset the contents of the modal every time it is opened again
+  // Persistent saving is not yet implemented (let them suffer)
   useEffect(() => {
     if (open) {
       dispatch({ type: "RESET" });
@@ -251,11 +77,12 @@ export function NewNotepadModal({
     }
   }, [open]);
 
+  // Additional properties
   const completedCount = state.tasks.filter((t) => t.checked).length;
   const totalCount = state.tasks.length;
-  const hasChanges = hasDraftChanges(state);
+  const hasChanges = isDirty(state);
 
-  /** Validates then builds `NotepadCardData` from the current draft and fires `onSubmit`. */
+  // handler-functions/submit: Handles the validation of the input before submission (see page.tsx)
   const handleSubmit = useCallback(() => {
     const trimmedTitle = state.title.trim();
     const validTasks = state.tasks.filter((t) => t.label.trim() !== "");
@@ -270,31 +97,17 @@ export function NewNotepadModal({
     }
 
     setValidationError(null);
-    const cardData: NotepadCardData = {
-      id: `notepad-${Date.now()}`,
-      title: trimmedTitle,
-      tasks: validTasks.map(
-        (t): TaskItemData => ({
-          label: t.label.trim(),
-          checked: t.checked,
-          flagged: t.flagged,
-          mode: t.mode,
-        }),
-      ),
-    };
-    console.log("[NewNotepadModal] handleSubmit payload:", cardData);
-    onSubmit(cardData);
+    onSubmit(trimmedTitle, validTasks);
     onClose();
   }, [state, onSubmit, onClose]);
 
-  /** Stable callback for task row updates — avoids re-rendering siblings. */
+  // handler-functions/update: Handles the change of properties and/or values of the TaskRow
   const handleUpdateTask = useCallback(
-    (index: number, task: DraftTask) =>
-      dispatch({ type: "UPDATE_TASK", index, task }),
+    (index: number, task: Task) => dispatch({ type: "UPDATE_TASK", index, task }),
     [],
   );
 
-  /** Stable callback for task removal. */
+  // handler-functions/remove: Handles the deletion of (draft) tasks 
   const handleRemoveTask = useCallback(
     (index: number) => dispatch({ type: "REMOVE_TASK", index }),
     [],
@@ -303,34 +116,24 @@ export function NewNotepadModal({
   if (!open) return null;
 
   return (
-    /* Backdrop — click outside the panel to dismiss */
     <div
       role="dialog"
       aria-modal="true"
       aria-label="New Notepad"
       className="fixed inset-0 z-40 flex items-center justify-center bg-gray-900/40"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      {/* Modal panel — mirrors NotepadCard design language */}
       <div className="relative w-full max-w-lg mx-4 rounded-xl bg-amber-100 shadow-2xl flex flex-col overflow-hidden max-h-[90vh]">
-        {/* ── Header ── */}
+
         <div className="w-full h-12 flex flex-row items-center justify-between px-5 pt-4 shrink-0">
           <div className="flex items-center gap-2 min-w-0 flex-1">
-            <NotepadText
-              size={16}
-              className="shrink-0 text-amber-700"
-              aria-hidden
-            />
+            <NotepadText size={16} className="shrink-0 text-amber-700" aria-hidden />
             <input
               type="text"
               value={state.title}
-              onChange={(e) =>
-                dispatch({ type: "SET_TITLE", title: e.target.value })
-              }
+              onChange={(e) => dispatch({ type: "SET_TITLE", title: e.target.value })}
               placeholder="Untitled Notepad"
-              className="flex-1 bg-transparent outline-none text-sm font-semibold text-amber-900 placeholder-amber-600 min-w-0"
+              className="flex-1 bg-transparent outline-none text-sm font-semibold text-amber-900 placeholder-amber-500/50 min-w-0"
               aria-label="Notepad title"
             />
           </div>
@@ -345,38 +148,22 @@ export function NewNotepadModal({
           </button>
         </div>
 
-        {/* ── Body ── */}
         <div className="flex-1 overflow-y-auto px-5 py-4 min-h-0 flex flex-col">
-          {/* Task list */}
           <div className="flex flex-col">
             <div className="flex items-center justify-between mb-3">
               <span className="flex items-center gap-1.5 text-md font-semibold uppercase tracking-wider text-amber-700">
                 Notepad List
                 <span className="relative group/legend cursor-default">
-                  <Info
-                    size={11}
-                    className="text-amber-500"
-                    aria-label="Task mode legend"
-                  />
+                  <Info size={11} className="text-amber-500" aria-label="Task mode legend" />
                   <span
                     role="tooltip"
-                    className="pointer-events-none absolute left-0 bottom-full mb-2 z-50
-                               w-52 rounded-lg bg-white border border-slate-200 shadow-lg px-3 py-2
-                               flex flex-col gap-1
-                               opacity-0 scale-95 group-hover/legend:opacity-100 group-hover/legend:scale-100
-                               transition-all duration-150 origin-bottom-left"
+                    className="pointer-events-none absolute left-0 bottom-full mb-2 z-50 w-52 rounded-lg bg-white border border-slate-200 shadow-lg px-3 py-2 flex flex-col gap-1 opacity-0 scale-95 group-hover/legend:opacity-100 group-hover/legend:scale-100 transition-all duration-150 origin-bottom-left"
                   >
                     <span className="flex items-center gap-1.5 text-[10px] text-slate-600 normal-case tracking-normal font-normal">
-                      <CheckSquare
-                        size={11}
-                        className="text-amber-600"
-                        aria-hidden
-                      />{" "}
-                      Checkbox mode — click the left box to complete
+                      <CheckSquare size={11} className="text-amber-600" aria-hidden /> Checkbox mode — click the left box to complete
                     </span>
                     <span className="flex items-center gap-1.5 text-[10px] text-slate-600 normal-case tracking-normal font-normal">
-                      <List size={11} className="text-amber-600" aria-hidden />{" "}
-                      List mode (no completion)
+                      <List size={11} className="text-amber-600" aria-hidden /> List mode (no completion)
                     </span>
                     <span className="flex items-center gap-1.5 text-[10px] text-red-400 normal-case tracking-normal font-normal">
                       <Flag size={11} aria-hidden /> Flagged / priority
@@ -384,68 +171,59 @@ export function NewNotepadModal({
                   </span>
                 </span>
               </span>
-              <span className="text-[10px] text-amber-600">
-                {totalCount} item{totalCount !== 1 ? "s" : ""}
-              </span>
+              <span className="text-[10px] text-amber-600">{totalCount} item{totalCount !== 1 ? "s" : ""}</span>
             </div>
 
-            {state.tasks.length === 0 && (
-              <p className="text-xs text-amber-500 italic mb-3">
-                No tasks yet — add one below.
-              </p>
+            {state.tasks.length === 0 ? (
+              <p className="text-xs text-amber-500 italic mb-3">No tasks yet — add one below.</p>
+            ) : (
+              <>
+                {state.tasks.some((t) => t.flagged) && (
+                  <div className="flex flex-col mb-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-700">Flagged</span>
+                    </div>
+                    <ul className="flex flex-col gap-2" aria-label="Flagged tasks">
+                      {state.tasks
+                        .map((task, index) => ({ task, index }))
+                        .filter(({ task }) => task.flagged)
+                        .map(({ task, index }) => (
+                          <TaskRow
+                            key={index}
+                            task={task}
+                            onChange={(updated) => handleUpdateTask(index, updated)}
+                            onRemove={() => handleRemoveTask(index)}
+                          />
+                        ))}
+                    </ul>
+                  </div>
+                )}
+
+                {state.tasks.some((t) => !t.flagged) && (
+                  <div className="flex flex-col">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-700">Unflagged</span>
+                    </div>
+                    <ul className="flex flex-col gap-2" aria-label="Task list">
+                      {state.tasks
+                        .map((task, index) => ({ task, index }))
+                        .filter(({ task }) => !task.flagged)
+                        .map(({ task, index }) => (
+                          <TaskRow
+                            key={index}
+                            task={task}
+                            onChange={(updated) => handleUpdateTask(index, updated)}
+                            onRemove={() => handleRemoveTask(index)}
+                          />
+                        ))}
+                    </ul>
+                  </div>
+                )}
+              </>
             )}
 
-            {/* Flagged section */}
-            <div className="flex flex-col">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-700">
-                  Flagged
-                </span>
-              </div>
-              {state.tasks.some((task) => task.flagged) ? (
-                <ul className="flex flex-col gap-2" aria-label="Flagged tasks">
-                  {state.tasks
-                    .map((task, index) => ({ task, index }))
-                    .filter(({ task }) => task.flagged)
-                    .map(({ task, index }) => (
-                      <TaskRow
-                        key={task.id}
-                        task={task}
-                        onChange={(updated) => handleUpdateTask(index, updated)}
-                        onRemove={() => handleRemoveTask(index)}
-                      />
-                    ))}
-                </ul>
-              ) : (
-                <p className="text-xs text-amber-500 italic mt-3">
-                  No flagged tasks yet.
-                </p>
-              )}
-            </div>
+            
 
-            {/* Unflagged section */}
-            <div className="flex flex-col">
-              <div className="flex items-center justify-between mt-4">
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-700">
-                  Unflagged
-                </span>
-              </div>
-              <ul className="flex flex-col gap-2" aria-label="Task list">
-                {state.tasks
-                  .map((task, index) => ({ task, index }))
-                  .filter(({ task }) => !task.flagged)
-                  .map(({ task, index }) => (
-                    <TaskRow
-                      key={task.id}
-                      task={task}
-                      onChange={(updated) => handleUpdateTask(index, updated)}
-                      onRemove={() => handleRemoveTask(index)}
-                    />
-                  ))}
-              </ul>
-            </div>
-
-            {/* Add task */}
             <button
               type="button"
               onClick={() => dispatch({ type: "ADD_TASK" })}
@@ -455,26 +233,18 @@ export function NewNotepadModal({
               Add Task
             </button>
 
-            {/* Validation error */}
             {validationError && (
-              <p className="mt-2 text-[11px] text-red-500 font-medium px-1">
-                {validationError}
-              </p>
+              <p className="mt-2 text-[11px] text-red-500 font-medium px-1">{validationError}</p>
             )}
           </div>
         </div>
 
-        {/* ── Footer actions ── */}
         <div className="shrink-0 px-5 py-3 flex items-center justify-between gap-2 bg-amber-100 border-t border-amber-200">
           {totalCount > 0 ? (
             <div className="flex-1 pr-4">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-[10px] text-amber-700 font-medium uppercase tracking-wide">
-                  Progress
-                </span>
-                <span className="text-[10px] text-amber-700">
-                  {completedCount}/{totalCount}
-                </span>
+                <span className="text-[10px] text-amber-700 font-medium uppercase tracking-wide">Progress</span>
+                <span className="text-[10px] text-amber-700">{completedCount}/{totalCount}</span>
               </div>
               <div className="w-full h-1 bg-amber-200 rounded-full overflow-hidden">
                 <div
@@ -494,7 +264,7 @@ export function NewNotepadModal({
             >
               Close
             </button>
-            {hasChanges && (
+            {hasChanges && (<>
               <button
                 type="button"
                 onClick={() => dispatch({ type: "RESET" })}
@@ -503,17 +273,19 @@ export function NewNotepadModal({
                 <RotateCcw size={13} aria-hidden />
                 Reset
               </button>
-            )}
-            <button
+              <button
               type="button"
               onClick={handleSubmit}
               className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold bg-amber-500 text-white hover:bg-amber-600 cursor-pointer transition uppercase shadow"
             >
               <Send size={13} aria-hidden />
               Submit
-            </button>
+            </button></>
+            )}
+            
           </div>
         </div>
+
       </div>
     </div>
   );

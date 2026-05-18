@@ -59,8 +59,7 @@ class Notepad(Base):
     owner: Mapped["User"] = relationship(back_populates="notepads")
     tasks: Mapped[list["Task"]] = relationship(
         back_populates="notepad",
-        cascade="all, delete-orphan",
-        order_by="Task.position",
+        cascade="all, delete-orphan"
     )
 
 
@@ -72,7 +71,6 @@ Task DB Resource: Associated with 'notepad_tasks' table.
 - checked    Whether the task is marked complete (checkbox mode only)
 - flagged    Whether the task is marked as priority
 - mode       "checkbox" | "list" — display/interaction mode
-- position   0-indexed insertion order for stable list ordering
 """
 class Task(Base):
     __tablename__ = "tasks"
@@ -83,7 +81,6 @@ class Task(Base):
     checked: Mapped[bool] = mapped_column(default=False)
     flagged: Mapped[bool] = mapped_column(default=False)
     mode: Mapped[TaskMode] = mapped_column(Enum(TaskMode), default=TaskMode.checkbox)
-    position: Mapped[int] = mapped_column(default=0)
 
     # Relationship
     notepad: Mapped["Notepad"] = relationship(back_populates="tasks")

@@ -1,14 +1,12 @@
 "use client";
 
-import type { TaskItemData } from "../types";
+import { Task, TaskMode } from "../types";
 
 interface TaskStatusIndicatorProps {
-  mode: TaskItemData["mode"];
+  mode: TaskMode
   checked: boolean;
-  /** Show a checkmark SVG inside the filled box when checked. Default true. */
   showCheck?: boolean;
   className?: string;
-  /** When provided the indicator becomes an interactive button that fires this handler. */
   onClick?: () => void;
 }
 

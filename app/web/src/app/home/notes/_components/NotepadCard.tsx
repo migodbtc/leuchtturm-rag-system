@@ -1,11 +1,11 @@
 import { Eye, Trash2, NotepadText } from "lucide-react";
-import type { NotepadCardData, TaskItemData } from "../types";
+import type { Notepad, Task } from "../types";
 import { TaskStatusIndicator } from "./TaskStatusIndicator";
 
 // ─── TaskItem ────────────────────────────────────────────────────────────────
 
 interface TaskItemProps {
-  task: TaskItemData;
+  task: Task;
 }
 
 function TaskItem({ task }: TaskItemProps) {
@@ -45,9 +45,9 @@ function TaskItem({ task }: TaskItemProps) {
 // ─── NotepadCard ─────────────────────────────────────────────────────────────
 
 interface NotepadCardProps {
-  notepad: NotepadCardData;
-  onView?: (id: string) => void;
-  onDelete?: (id: string) => void;
+  notepad: Notepad;
+  onView?: (id: number) => void;
+  onDelete?: (id: number) => void;
 }
 
 export function NotepadCard({ notepad, onView, onDelete }: NotepadCardProps) {

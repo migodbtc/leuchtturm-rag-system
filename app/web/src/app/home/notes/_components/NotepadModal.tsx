@@ -18,14 +18,14 @@ import {
   Plus,
   Trash2,
 } from "lucide-react";
-import type { NotepadCardData, TaskItemData } from "../types";
+import type { Notepad, Task, TaskMode } from "../types";
 import { TaskStatusIndicator } from "./TaskStatusIndicator";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 interface NotepadModalProps {
   open: boolean;
-  notepad: NotepadCardData | null;
+  notepad: Notepad | null;
   onClose: () => void;
 }
 
@@ -43,7 +43,7 @@ interface NewTaskDraft {
   label: string;
   checked: boolean;
   flagged: boolean;
-  mode: "checkbox" | "list";
+  mode: TaskMode;
 }
 
 const BLANK_DRAFT: NewTaskDraft = {
@@ -53,7 +53,7 @@ const BLANK_DRAFT: NewTaskDraft = {
   mode: "checkbox",
 };
 
-function areTasksEqual(a: TaskItemData[], b: TaskItemData[]) {
+function areTasksEqual(a: Task[], b: Task[]) {
   if (a.length !== b.length) return false;
   return a.every((task, index) => {
     const other = b[index];
@@ -74,7 +74,7 @@ function areTasksEqual(a: TaskItemData[], b: TaskItemData[]) {
  * Mode toggle resets checked state when switching to list.
  */
 interface TaskRowProps {
-  task: TaskItemData;
+  task: Task;
   index: number;
   isEditing: boolean;
   onEdit: (index: number, currentLabel: string) => void;
@@ -231,10 +231,10 @@ function TaskRow({
 // ─── NotepadModal ─────────────────────────────────────────────────────────────
 
 export function NotepadModal({ open, notepad, onClose }: NotepadModalProps) {
-  const [initialNotepad, setInitialNotepad] = useState<NotepadCardData | null>(
+  const [initialNotepad, setInitialNotepad] = useState<Notepad | null>(
     null,
   );
-  const [draftTasks, setDraftTasks] = useState<TaskItemData[]>([]);
+  const [draftTasks, setDraftTasks] = useState<Task[]>([]);
   const [editState, setEditState] = useState<EditState>({
     taskIndex: null,
     value: "",
@@ -357,6 +357,9 @@ export function NotepadModal({ open, notepad, onClose }: NotepadModalProps) {
     setDraftTasks((prev) => [
       ...prev,
       {
+        // id / notepad_id are server-assigned; use sentinels until persisted.
+        id: 0,
+        notepad_id: initialNotepad?.id ?? 0,
         label: newTaskDraft.label.trim(),
         checked: newTaskDraft.checked,
         flagged: newTaskDraft.flagged,
@@ -364,7 +367,7 @@ export function NotepadModal({ open, notepad, onClose }: NotepadModalProps) {
       },
     ]);
     setNewTaskDraft(BLANK_DRAFT);
-  }, [newTaskDraft]);
+  }, [newTaskDraft, initialNotepad?.id]);
 
   // ── Footer ────────────────────────────────────────────────────────────────
 
@@ -396,13 +399,28 @@ export function NotepadModal({ open, notepad, onClose }: NotepadModalProps) {
     }
 
     setValidationError(null);
-    const payload = {
-      id: initialNotepad?.id,
+    const payload: Notepad = {
+      // id / user_id / timestamps come from the server — keep the originals
+      // if available, otherwise use sentinels until persisted.
+      id: initialNotepad?.id ?? 0,
+      user_id: initialNotepad?.user_id ?? 0,
       title: trimmedTitle,
-      tasks: validTasks,
+      created_at: initialNotepad?.created_at ?? new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      tasks: validTasks.map(
+        (t): Task => ({
+          // Preserve existing server ids; new tasks use sentinel 0.
+          id: (t as Task).id ?? 0,
+          notepad_id: (t as Task).notepad_id ?? (initialNotepad?.id ?? 0),
+          label: t.label,
+          checked: t.checked,
+          flagged: t.flagged,
+          mode: t.mode,
+        }),
+      ),
     };
     console.log("[NotepadModal] handleSubmit payload:", payload);
-  }, [initialNotepad?.id, titleState.value, draftTasks]);
+  }, [initialNotepad, titleState.value, draftTasks]);
 
   if (!open || !notepad) return null;
 
