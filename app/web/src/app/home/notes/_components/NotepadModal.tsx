@@ -395,6 +395,7 @@ export function NotepadModal({
     const trimmedTitle = titleState.value.trim();
     const validTasks = draftTasks.filter((t) => t.label.trim() !== "");
 
+    // validation checks
     if (trimmedTitle === "") {
       setValidationError("Please add a title before submitting.");
       return;
@@ -535,49 +536,50 @@ export function NotepadModal({
             <>
               {/* Flagged */}
               <div className="flex flex-col">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-700">
-                    Flagged
-                  </span>
-                </div>
                 {draftTasks.some((task) => task.flagged) ? (
-                  <ul
-                    className="flex flex-col gap-2"
-                    aria-label="Flagged tasks"
-                  >
-                    {draftTasks
-                      .map((task, index) => ({ task, index }))
-                      .filter(({ task }) => task.flagged)
-                      .map(({ task, index }) => (
-                        <TaskRow
-                          key={`${notepad.id}-flagged-${index}`}
-                          task={task}
-                          index={index}
-                          isEditing={editState.taskIndex === index}
-                          onEdit={handleEditStart}
-                          onSave={handleEditSave}
-                          onReset={handleEditReset}
-                          editValue={editState.value}
-                          onEditValueChange={(value) =>
-                            setEditState((prev) => ({ ...prev, value }))
-                          }
-                          onModeToggle={handleModeToggle}
-                          onCheckToggle={handleCheckToggle}
-                          onFlagToggle={handleFlagToggle}
-                          onRemove={handleRemove}
-                        />
-                      ))}
-                  </ul>
+                  <div className="w-full mb-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-700">
+                        Flagged
+                      </span>
+                    </div>
+
+                    <ul
+                      className="flex flex-col gap-2"
+                      aria-label="Flagged tasks"
+                    >
+                      {draftTasks
+                        .map((task, index) => ({ task, index }))
+                        .filter(({ task }) => task.flagged)
+                        .map(({ task, index }) => (
+                          <TaskRow
+                            key={`${notepad.id}-flagged-${index}`}
+                            task={task}
+                            index={index}
+                            isEditing={editState.taskIndex === index}
+                            onEdit={handleEditStart}
+                            onSave={handleEditSave}
+                            onReset={handleEditReset}
+                            editValue={editState.value}
+                            onEditValueChange={(value) =>
+                              setEditState((prev) => ({ ...prev, value }))
+                            }
+                            onModeToggle={handleModeToggle}
+                            onCheckToggle={handleCheckToggle}
+                            onFlagToggle={handleFlagToggle}
+                            onRemove={handleRemove}
+                          />
+                        ))}
+                    </ul>
+                  </div>
                 ) : (
-                  <p className="text-xs text-amber-500 italic mt-3">
-                    No flagged tasks yet.
-                  </p>
+                  <></>
                 )}
               </div>
 
               {/* Unflagged */}
               <div className="flex flex-col">
-                <div className="flex items-center justify-between mt-4">
+                <div className="flex items-center justify-between">
                   <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-700">
                     Unflagged
                   </span>

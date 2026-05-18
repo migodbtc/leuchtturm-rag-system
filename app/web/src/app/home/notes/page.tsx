@@ -1,7 +1,14 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Search, Plus, NotepadText, AlertCircle, Loader2 } from "lucide-react";
+import {
+  Search,
+  Plus,
+  NotepadText,
+  AlertCircle,
+  Loader2,
+  RotateCcw,
+} from "lucide-react";
 import { NotepadCard } from "./_components/NotepadCard";
 import { NewNotepadModal } from "./_components/NewNotepadModal";
 import { NotepadModal } from "./_components/NotepadModal";
@@ -26,7 +33,7 @@ export default function NotesPage() {
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
   const [selectedNotepad, setSelectedNotepad] = useState<Notepad | null>(null);
   const [notepads, setNotepads] = useState<Notepad[]>([]);
-
+  const [searchTitle, setSearchTitle] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [pageError, setPageError] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
@@ -34,23 +41,25 @@ export default function NotesPage() {
   // handleIndex: useCallback which contains the sending of the request to the
   // FastAPI's handle_notepad_index route (see main.py). On success, data is stored
   // on notepads, and on failure, pageError value is defined with API error message.
-  const handleIndex = useCallback(async (skip = 0, limit = 21) => {
+  const handleIndex = useCallback(async (skip = 0, limit = 21, title = "") => {
     setLoading(true);
     setPageError(null);
 
     try {
       const res = await fetch(
-        `${API_BASE}/notepads?skip=${skip}&limit=${limit}`,
+        `${API_BASE}/notepads?skip=${skip}&limit=${limit}&title=${title}`,
         {
           headers: authHeaders(),
         },
       );
+
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         throw new Error(
           err.detail ?? `Failed to load notepads (${res.status})`,
         );
       }
+
       const data: Notepad[] = await res.json();
       setNotepads(data);
     } catch (e) {
@@ -247,9 +256,36 @@ export default function NotesPage() {
           <input
             type="text"
             placeholder="Search notepads..."
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setSearchTitle(e.target.value)
+            }
+            value={searchTitle}
             className="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400 hover:cursor-pointer"
           />
         </motion.div>
+
+        <motion.button
+          variants={itemVariants}
+          className="flex flex-row justify-center align-middle items-center gap-2 h-10 px-4 bg-white border border-slate-300 rounded-lg font-semibold text-sm uppercase text-slate-500 cursor-pointer hover:bg-slate-100"
+          onClick={() => handleIndex(0, 21, searchTitle)}
+        >
+          <Search size={18} />
+          Search
+        </motion.button>
+
+        {searchTitle != "" && (
+          <motion.button
+            variants={itemVariants}
+            className="flex flex-row justify-center align-middle items-center gap-2 h-10 px-4 bg-white border border-slate-300 rounded-lg font-semibold text-sm uppercase text-slate-500 cursor-pointer hover:bg-slate-100"
+            onClick={async () => {
+              setSearchTitle("");
+              handleIndex();
+            }}
+          >
+            <RotateCcw size={18} />
+            Reset
+          </motion.button>
+        )}
 
         <motion.button
           onClick={() => setCreateModalOpen(true)}

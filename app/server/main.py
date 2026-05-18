@@ -167,14 +167,18 @@ async def handle_notepad_index(
     db: AsyncSession = Depends(get_db),
     skip: int = Query(default=0, ge=0),
     limit: int = Query(default=21, ge=1, le=100),
+    title: str = Query(default="")
 ):
-    result = await db.execute(
-        select(Notepad)
-        .where(Notepad.user_id == current_user.id)
-        .options(selectinload(Notepad.tasks))
-        .offset(skip)
-        .limit(limit)
-    )
+    
+    logger.info(f"Title: {title}")
+
+    query = select(Notepad).where((Notepad.user_id == current_user.id)).options(selectinload(Notepad.tasks)).offset(skip).limit(limit)
+
+    if title != "": 
+        query = query.where(Notepad.title.ilike(f"%{title}%"))
+
+    result = await db.execute(query)   
+
     return result.scalars().all()
 
 """
@@ -238,6 +242,11 @@ async def handle_notepad_select(
 
     return notepad
 
+""" 
+handle_notepad_update: updates the currently existing notepad by receiving the new version
+of the notepad and overwriting the data sent in the payload. returns the new version of the 
+notepad.
+"""
 @app.put("/notepads/{notepad_id}")
 async def handle_notepad_update(
     notepad: NotepadUpdate, 
