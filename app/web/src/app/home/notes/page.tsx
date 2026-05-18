@@ -64,7 +64,7 @@ export default function NotesPage() {
     handleIndex();
   }, [handleIndex]);
 
-  // ── handleCreate ─────────────────────────────────────────────────────────────
+  // handleCreate: async function to create new notepads for the authenticated user
   async function handleCreate(title: string, tasks: Task[]) {
     setActionError(null);
     try {
@@ -98,7 +98,7 @@ export default function NotesPage() {
     }
   }
 
-  // ── handleView ───────────────────────────────────────────────────────────────
+  // handleView: async function to select (read) a certain notepad made by the user
   async function handleView(id: number) {
     setActionError(null);
     try {
@@ -119,7 +119,42 @@ export default function NotesPage() {
     }
   }
 
-  // ── handleDelete ─────────────────────────────────────────────────────────────
+  // handleUpdate: async function for updating an existing notepad
+  async function handleUpdate(payload: Notepad) {
+    setActionError(null);
+
+    try {
+      const res = await fetch(`${API_BASE}/notepads/${payload.id}`, {
+        method: "PUT",
+        headers: authHeaders(),
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(
+          err.detail ?? `Failed to update the notepad (${res.status})`,
+        );
+      }
+
+      // post-200 update client-side here
+      const data: Notepad = await res.json();
+      setNotepads((prev) =>
+        // each outdated notepad is iterated
+        prev.map((notepad) => (notepad.id == data.id ? { ...data } : notepad)),
+      );
+
+      setViewModalOpen(false);
+    } catch (e) {
+      setActionError(
+        e instanceof Error
+          ? e.message
+          : "Unexpected error updating the notepad.",
+      );
+    }
+  }
+
+  // handleDelete: async function to delete an existing notepad made by the user
   async function handleDelete(id: number) {
     setActionError(null);
     try {
@@ -239,6 +274,7 @@ export default function NotesPage() {
         open={viewModalOpen}
         notepad={selectedNotepad}
         onClose={() => setViewModalOpen(false)}
+        onSubmit={handleUpdate}
       />
     </div>
   );

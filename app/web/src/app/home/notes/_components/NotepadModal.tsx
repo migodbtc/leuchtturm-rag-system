@@ -27,6 +27,7 @@ interface NotepadModalProps {
   open: boolean;
   notepad: Notepad | null;
   onClose: () => void;
+  onSubmit: (payload: Notepad) => void;
 }
 
 interface EditState {
@@ -108,7 +109,9 @@ function TaskRow({
       <TaskStatusIndicator
         mode={task.mode}
         checked={task.checked}
-        onClick={task.mode === "checkbox" ? () => onCheckToggle(index) : undefined}
+        onClick={
+          task.mode === "checkbox" ? () => onCheckToggle(index) : undefined
+        }
       />
 
       {/* Label */}
@@ -230,10 +233,13 @@ function TaskRow({
 
 // ─── NotepadModal ─────────────────────────────────────────────────────────────
 
-export function NotepadModal({ open, notepad, onClose }: NotepadModalProps) {
-  const [initialNotepad, setInitialNotepad] = useState<Notepad | null>(
-    null,
-  );
+export function NotepadModal({
+  open,
+  notepad,
+  onClose,
+  onSubmit,
+}: NotepadModalProps) {
+  const [initialNotepad, setInitialNotepad] = useState<Notepad | null>(null);
   const [draftTasks, setDraftTasks] = useState<Task[]>([]);
   const [editState, setEditState] = useState<EditState>({
     taskIndex: null,
@@ -399,9 +405,8 @@ export function NotepadModal({ open, notepad, onClose }: NotepadModalProps) {
     }
 
     setValidationError(null);
+
     const payload: Notepad = {
-      // id / user_id / timestamps come from the server — keep the originals
-      // if available, otherwise use sentinels until persisted.
       id: initialNotepad?.id ?? 0,
       user_id: initialNotepad?.user_id ?? 0,
       title: trimmedTitle,
@@ -409,9 +414,8 @@ export function NotepadModal({ open, notepad, onClose }: NotepadModalProps) {
       updated_at: new Date().toISOString(),
       tasks: validTasks.map(
         (t): Task => ({
-          // Preserve existing server ids; new tasks use sentinel 0.
           id: (t as Task).id ?? 0,
-          notepad_id: (t as Task).notepad_id ?? (initialNotepad?.id ?? 0),
+          notepad_id: (t as Task).notepad_id ?? initialNotepad?.id ?? 0,
           label: t.label,
           checked: t.checked,
           flagged: t.flagged,
@@ -419,7 +423,10 @@ export function NotepadModal({ open, notepad, onClose }: NotepadModalProps) {
         }),
       ),
     };
+
     console.log("[NotepadModal] handleSubmit payload:", payload);
+
+    onSubmit(payload);
   }, [initialNotepad, titleState.value, draftTasks]);
 
   if (!open || !notepad) return null;
@@ -681,7 +688,9 @@ export function NotepadModal({ open, notepad, onClose }: NotepadModalProps) {
                       flagged: !prev.flagged,
                     }))
                   }
-                  title={newTaskDraft.flagged ? "Remove flag" : "Flag as priority"}
+                  title={
+                    newTaskDraft.flagged ? "Remove flag" : "Flag as priority"
+                  }
                   aria-pressed={newTaskDraft.flagged}
                   className={[
                     "p-1.5 rounded-md transition cursor-pointer",

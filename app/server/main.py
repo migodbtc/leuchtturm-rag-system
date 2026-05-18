@@ -1,4 +1,6 @@
 # Third-party Libraries
+import logging
+
 from fastapi import FastAPI, Depends, HTTPException, status, Query
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,11 +17,14 @@ from database import get_db
 from auth import get_password_hash, verify_password, create_access_token, decode_token
 from models import User, Notepad, Task
 from schemas import (
-    UserCreate, UserResponse, AccessToken, DeleteUserRequest, DeleteUserResponse,
+    NotepadUpdate, TaskResponse, UserCreate, UserResponse, AccessToken, DeleteUserRequest, DeleteUserResponse,
     NotepadCreate, NotepadResponse, NotepadDeleteResponse,
 )
 
 load_dotenv()
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 
@@ -232,6 +237,69 @@ async def handle_notepad_select(
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Access denied")
 
     return notepad
+
+@app.put("/notepads/{notepad_id}")
+async def handle_notepad_update(
+    notepad: NotepadUpdate, 
+    current_user: Annotated[User, Depends(get_current_user)], 
+    db: AsyncSession = Depends(get_db)
+):
+    # validation check if user is editing their own notepad
+    if current_user.id != notepad.user_id:
+        raise HTTPException(status_code=403, detail="This isn't your notepad, bro")
+    
+    # name current payload data as 'future' as opposed to 'current' (later)
+    future = notepad 
+
+    # retrieve the current iteration of the notepad
+    result = await db.execute(
+        select(Notepad)
+        .where(Notepad.id == notepad.id)
+        .options(selectinload(Notepad.tasks))
+    )
+    current: Notepad | None = result.scalars().first()
+
+    # error case: return 404 if notepad is missing
+    if current == None: 
+        raise HTTPException(status_code=404, detail="Notepad not found!")
+
+    # parse comparisons using iterations, title first then tasks second 
+    current.title = future.title
+    
+    # for tasks, clear the current pool and append all manually 
+    current.tasks.clear()
+    for task_info in future.tasks: 
+        
+        task_instance = Task(
+            label=task_info.label,
+            checked=task_info.flagged,
+            mode=task_info.mode,
+        )
+        
+        current.tasks.append(task_instance)
+
+    # now we commit but wrap it in an error handling try block for error cases
+    try:
+        await db.commit()
+        await db.refresh(current)
+    except Exception:
+        await db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to create notepad"
+        )
+
+    # retrieve the result from the database
+    result = await db.execute(
+        select(Notepad)
+        .where(Notepad.id == current.id)
+        .options(selectinload(Notepad.tasks))
+    )
+
+    # newly update notepad object
+    final = result.scalars().first()
+
+    return final
 
 """
 handle_notepad_delete: deletes a notepad (and its tasks via cascade) for the authenticated user.

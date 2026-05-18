@@ -80,7 +80,15 @@ user_id, timestamps, and id are all assigned server-side.
 """
 class NotepadCreate(BaseModel):
     title: str
-    tasks: list[TaskCreate] = []
+    tasks: list[TaskCreate] = [] 
+
+class NotepadUpdate(BaseModel):
+    id: int
+    user_id: int
+    title: str
+    created_at: datetime
+    updated_at: datetime
+    tasks: list[TaskResponse] = [] 
 
 """
 NotepadResponse: Read schema for a Notepad ORM object including its tasks.
