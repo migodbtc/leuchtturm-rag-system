@@ -4,6 +4,7 @@ import logging
 from fastapi import FastAPI, Depends, HTTPException, status, Query
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import func
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.future import select
@@ -345,6 +346,59 @@ async def handle_delete(
     await db.commit()
 
     return {"message": f"Notepad {notepad_id} deleted", "deleted_notepad_id": notepad_id}
+
+"""
+handle_dashboard_analytics: endpoint handling the analytics needed for the dashboard of the
+current user authenticated. 
+"""
+@app.get('/dashboard')
+async def handle_user_dashboard(
+    current_user: Annotated[User, Depends(get_current_user)],
+    db: AsyncSession = Depends(get_db),
+):
+    
+    resp = {
+        # "total_notepads": int | None,
+        # "total_tasks": int | None,
+        # "total_completed_tasks": int | None,
+        # "all_notepads": int | None,
+    }
+
+    # SELECT COUNT(*) FROM Notepads
+    result = await db.execute(select(func.count())
+        .select_from(Notepad)
+    )
+    resp["all_notepads"] = result.scalars().first()
+
+    # SELECT COUNT(*) FROM Notepads WHERE id == current_user.id
+    result = await db.execute(select(func.count())
+        .select_from(Notepad)
+        .where(Notepad.user_id == current_user.id)
+    )
+    resp["total_notepads"] = result.scalars().first()
+    
+    # SELECT COUNT(*) FROM Notepads JOIN Tasks WHERE Task.notepad_id == Notepad.id
+    result = await db.execute(
+        select(func.count())
+        .select_from(Notepad)
+        .join(Task)
+        .where(Notepad.user_id == current_user.id)
+    )
+    resp["total_tasks"] = result.scalars().first()
+
+    # same shit but with WHERE Task.checked == true
+    result = await db.execute(
+        select(func.count())
+        .select_from(Notepad)
+        .join(Task)
+        .where((Notepad.user_id == current_user.id) & (Task.checked == True))
+    )
+    resp["total_completed_tasks"] = result.scalars().first()
+
+
+    logger.info(resp)
+    
+    return resp 
 
 @app.get('/')
 def root():

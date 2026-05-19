@@ -311,6 +311,8 @@ export default function NotesPage() {
       <motion.section
         className="w-full grid grid-cols-3 gap-4 mb-2"
         variants={containerVariants}
+        initial={"hidden"}
+        animate={"visible"}
       >
         {loading ? (
           <motion.div
