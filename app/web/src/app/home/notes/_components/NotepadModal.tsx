@@ -20,6 +20,8 @@ import {
 } from "lucide-react";
 import type { Notepad, Task, TaskMode } from "../types";
 import { TaskStatusIndicator } from "./TaskStatusIndicator";
+import { motion } from "framer-motion";
+import { containerVariants, itemVariants } from "@/utils/motion";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -431,7 +433,7 @@ export function NotepadModal({
   if (!open || !notepad) return null;
 
   return (
-    <div
+    <motion.div
       role="dialog"
       aria-modal="true"
       aria-label="Notepad"
@@ -439,10 +441,16 @@ export function NotepadModal({
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
     >
       <div className="relative w-full max-w-lg mx-4 rounded-xl bg-amber-100 shadow-2xl flex flex-col overflow-hidden max-h-[90vh]">
         {/* ── Header ── */}
-        <div className="w-full h-12 flex flex-row items-center justify-between px-5 pt-4 shrink-0">
+        <motion.div
+          variants={itemVariants}
+          className="w-full h-12 flex flex-row items-center justify-between px-5 pt-4 shrink-0"
+        >
           <div className="flex items-center gap-2 min-w-0 flex-1">
             <NotepadText
               size={16}
@@ -515,23 +523,34 @@ export function NotepadModal({
               <X size={16} />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* ── Body ── */}
-        <div className="flex-1 overflow-y-auto px-5 py-4 min-h-0 flex flex-col">
-          <div className="flex items-center justify-between mb-3">
+        <motion.div
+          variants={itemVariants}
+          className="flex-1 overflow-y-auto px-5 py-4 min-h-0 flex flex-col"
+        >
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center justify-between mb-3"
+          >
             <span className="text-md font-semibold uppercase tracking-wider text-amber-700">
               Notepad List
             </span>
             <span className="text-[10px] text-amber-600">
               {totalCount} item{totalCount !== 1 ? "s" : ""}
             </span>
-          </div>
+          </motion.div>
 
           {totalCount === 0 ? (
-            <p className="text-xs text-amber-500 italic">No tasks yet.</p>
+            <motion.p
+              variants={itemVariants}
+              className="text-xs text-amber-500 italic"
+            >
+              No tasks yet.
+            </motion.p>
           ) : (
-            <>
+            <motion.div variants={itemVariants}>
               {/* Flagged */}
               <div className="flex flex-col">
                 {draftTasks.some((task) => task.flagged) ? (
@@ -542,9 +561,10 @@ export function NotepadModal({
                       </span>
                     </div>
 
-                    <ul
+                    <motion.ul
                       className="flex flex-col gap-2"
                       aria-label="Flagged tasks"
+                      variants={itemVariants}
                     >
                       {draftTasks
                         .map((task, index) => ({ task, index }))
@@ -568,7 +588,7 @@ export function NotepadModal({
                             onRemove={handleRemove}
                           />
                         ))}
-                    </ul>
+                    </motion.ul>
                   </div>
                 ) : (
                   <></>
@@ -576,13 +596,17 @@ export function NotepadModal({
               </div>
 
               {/* Unflagged */}
-              <div className="flex flex-col">
+              <motion.div variants={itemVariants} className="flex flex-col">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-700">
                     Unflagged
                   </span>
                 </div>
-                <ul className="flex flex-col gap-2" aria-label="Task list">
+                <motion.ul
+                  variants={itemVariants}
+                  className="flex flex-col gap-2"
+                  aria-label="Task list"
+                >
                   {draftTasks
                     .map((task, index) => ({ task, index }))
                     .filter(({ task }) => !task.flagged)
@@ -605,17 +629,20 @@ export function NotepadModal({
                         onRemove={handleRemove}
                       />
                     ))}
-                </ul>
-              </div>
-            </>
+                </motion.ul>
+              </motion.div>
+            </motion.div>
           )}
 
           {/* ── New task draft (matches existing TaskRow style) ── */}
-          <div className="mt-4 flex flex-col">
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-700 mb-1">
+          <motion.div variants={itemVariants} className="mt-4 flex flex-col">
+            <motion.span
+              variants={itemVariants}
+              className="text-[10px] font-semibold uppercase tracking-wider text-amber-700 mb-1"
+            >
               New Task
-            </span>
-            <ul>
+            </motion.span>
+            <motion.ul variants={itemVariants}>
               <li className="flex items-center gap-2 py-2 bg-amber-100 border-b border-amber-300">
                 {/* Left indicator toggles draft checked in checkbox mode */}
                 <TaskStatusIndicator
@@ -713,7 +740,7 @@ export function NotepadModal({
                   <Trash2 size={13} aria-hidden />
                 </button>
               </li>
-            </ul>
+            </motion.ul>
 
             <button
               type="button"
@@ -723,7 +750,7 @@ export function NotepadModal({
               <Plus size={13} />
               Add Task
             </button>
-          </div>
+          </motion.div>
 
           {/* Validation error */}
           {validationError && (
@@ -731,12 +758,15 @@ export function NotepadModal({
               {validationError}
             </p>
           )}
-        </div>
+        </motion.div>
 
         {/* ── Footer ── */}
-        <div className="shrink-0 px-5 py-3 flex items-center justify-between gap-2 bg-amber-100 border-t border-amber-200">
+        <motion.div
+          variants={itemVariants}
+          className="shrink-0 px-5 py-3 flex items-center justify-between gap-2 bg-amber-100 border-t border-amber-200"
+        >
           {totalCount > 0 ? (
-            <div className="flex-1 pr-4">
+            <motion.div variants={itemVariants} className="flex-1 pr-4">
               <div className="flex items-center justify-between mb-1">
                 <span className="text-[10px] text-amber-700 font-medium uppercase tracking-wide">
                   Progress
@@ -751,11 +781,14 @@ export function NotepadModal({
                   style={{ width: `${(completedCount / totalCount) * 100}%` }}
                 />
               </div>
-            </div>
+            </motion.div>
           ) : (
             <div className="flex-1" />
           )}
-          <div className="flex items-center justify-end gap-2">
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center justify-end gap-2"
+          >
             <button
               type="button"
               onClick={onClose}
@@ -783,9 +816,9 @@ export function NotepadModal({
                 </button>
               </>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }

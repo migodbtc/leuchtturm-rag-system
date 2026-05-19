@@ -66,7 +66,9 @@ export function NotepadCard({
   return (
     <motion.div
       className="rounded-xl bg-amber-100 aspect-square flex flex-col overflow-hidden"
-      variants={containerVariants}
+      variants={itemVariants}
+      initial="hidden"
+      animate="visible"
     >
       {/* ── Header ── */}
       <div className="w-full h-16 border-b border-amber-300 flex flex-row items-center justify-between px-4 shrink-0">
