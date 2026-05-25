@@ -1,6 +1,7 @@
 # GLOBAL SECURITY
 # Global-wide ignores necessary to keep the security of the project
 .env.local
+.env
 *.pem
 *.key
 
@@ -24,6 +25,7 @@ env/
 htmlcov/
 .mypy_cache/
 .ruff_cache/
+cache/
 
 # NEXT.JS, VITE, REACT, & TYPESCRIPT
 # Node modules, build artifacts, caches, package setup files, etc

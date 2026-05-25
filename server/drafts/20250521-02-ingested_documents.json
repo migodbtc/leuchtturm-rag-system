@@ -1,0 +1,2360 @@
+[
+  {
+    "page_content": "// File Location: server/alembic.ini\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': '# A generic, single database configuration.\\n\\n[alembic]\\n# path ...",
+    "metadata": {
+      "source_path": "server/alembic.ini",
+      "file_name": "alembic.ini",
+      "file_extension": "ini",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/alembic.ini\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 2\n\n{'content': '# sys.path path, will be prepended to sys.path if present.\\n# def...",
+    "metadata": {
+      "source_path": "server/alembic.ini",
+      "file_name": "alembic.ini",
+      "file_extension": "ini",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/alembic.ini\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 3\n\n{'content': '# version location specification; This defaults\\n# to <script_loc...",
+    "metadata": {
+      "source_path": "server/alembic.ini",
+      "file_name": "alembic.ini",
+      "file_extension": "ini",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/alembic.ini\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 4\n\n{'content': '# path_separator; This indicates what character is used to split ...",
+    "metadata": {
+      "source_path": "server/alembic.ini",
+      "file_name": "alembic.ini",
+      "file_extension": "ini",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/alembic.ini\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 5\n\n{'content': '#\\n# path_separator = :\\n# path_separator = ;\\n# path_separator =...",
+    "metadata": {
+      "source_path": "server/alembic.ini",
+      "file_name": "alembic.ini",
+      "file_extension": "ini",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/alembic.ini\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 6\n\n{'content': '# set to \\'true\\' to search source files recursively\\n# in each \"...",
+    "metadata": {
+      "source_path": "server/alembic.ini",
+      "file_name": "alembic.ini",
+      "file_extension": "ini",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/alembic.ini\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 7\n\n{'content': '# lint with attempts to fix using \"ruff\" - use the module runner,...",
+    "metadata": {
+      "source_path": "server/alembic.ini",
+      "file_name": "alembic.ini",
+      "file_extension": "ini",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/pyproject.toml\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': '[project]\\nname = \"yellowpad-api\"\\nversion = \"0.1.0\"\\ndescript...",
+    "metadata": {
+      "source_path": "server/pyproject.toml",
+      "file_name": "pyproject.toml",
+      "file_extension": "toml",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/pyproject.toml\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 2\n\n{'content': '[build-system]\\nrequires = [\"poetry-core>=2.0.0,<3.0.0\"]\\nbuil...",
+    "metadata": {
+      "source_path": "server/pyproject.toml",
+      "file_name": "pyproject.toml",
+      "file_extension": "toml",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/alembic/README.md\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': '# Alembic Migration Guide \\n> Made by ChatGPT 5.4 - mistake...",
+    "metadata": {
+      "source_path": "server/alembic/README.md",
+      "file_name": "README.md",
+      "file_extension": "md",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/alembic/README.md\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 2\n\n{'content': 'are wired together.\\n\\n### `versions/` (migration history l...",
+    "metadata": {
+      "source_path": "server/alembic/README.md",
+      "file_name": "README.md",
+      "file_extension": "md",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/alembic/README.md\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 3\n\n{'content': '---\\n\\n## 3. How Alembic fits your stack\\n\\nGiven your stru...",
+    "metadata": {
+      "source_path": "server/alembic/README.md",
+      "file_name": "README.md",
+      "file_extension": "md",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/alembic/README.md\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 4\n\n{'content': '* autogenerate will produce empty or incorrect migrations\\n...",
+    "metadata": {
+      "source_path": "server/alembic/README.md",
+      "file_name": "README.md",
+      "file_extension": "md",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/alembic/script.py.mako\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': '\"\"\"${message}\\n\\nRevision ID: ${up_revision}\\nRevises:...",
+    "metadata": {
+      "source_path": "server/alembic/script.py.mako",
+      "file_name": "script.py.mako",
+      "file_extension": "mako",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/scripts/seed.sql\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': \"-- Optional: Disable foreign key checks if you want to trunc...",
+    "metadata": {
+      "source_path": "server/scripts/seed.sql",
+      "file_name": "seed.sql",
+      "file_extension": "sql",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/scripts/seed.sql\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 2\n\n{'content': \"-- 2. Notepads (2 per user = 12 instances)\\nINSERT INTO note...",
+    "metadata": {
+      "source_path": "server/scripts/seed.sql",
+      "file_name": "seed.sql",
+      "file_extension": "sql",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/scripts/seed.sql\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 3\n\n{'content': \"-- Notepad 1: Groceries & Meal Prep\\n(1, 1, 'Buy organic spi...",
+    "metadata": {
+      "source_path": "server/scripts/seed.sql",
+      "file_name": "seed.sql",
+      "file_extension": "sql",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/scripts/seed.sql\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 4\n\n{'content': \"-- Notepad 3: Home Renovation Ideas\\n(13, 3, 'Get quote for ...",
+    "metadata": {
+      "source_path": "server/scripts/seed.sql",
+      "file_name": "seed.sql",
+      "file_extension": "sql",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/scripts/seed.sql\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 5\n\n{'content': \"-- Notepad 5: Weekend Trip Itinerary\\n(25, 5, 'Book Airbnb',...",
+    "metadata": {
+      "source_path": "server/scripts/seed.sql",
+      "file_name": "seed.sql",
+      "file_extension": "sql",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/scripts/seed.sql\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 6\n\n{'content': \"-- Notepad 7: Workout Routine\\n(37, 7, 'Warm up: 10 min card...",
+    "metadata": {
+      "source_path": "server/scripts/seed.sql",
+      "file_name": "seed.sql",
+      "file_extension": "sql",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/scripts/seed.sql\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 7\n\n{'content': \"-- Notepad 9: Birthday Party Planning\\n(49, 9, 'Order the ca...",
+    "metadata": {
+      "source_path": "server/scripts/seed.sql",
+      "file_name": "seed.sql",
+      "file_extension": "sql",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: server/scripts/seed.sql\n// Code Block Group: backend_service:infrastructure:utility \n// Chunk Identifier: 8\n\n{'content': \"-- Notepad 11: Freelance Projects\\n(61, 11, 'Redesign landin...",
+    "metadata": {
+      "source_path": "server/scripts/seed.sql",
+      "file_name": "seed.sql",
+      "file_extension": "sql",
+      "code_group": "backend_service:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/AGENTS.md\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': '<!-- BEGIN:nextjs-agent-rules -->\\n# This is NOT the Next.js you know\\n\\nT...",
+    "metadata": {
+      "source_path": "web/AGENTS.md",
+      "file_name": "AGENTS.md",
+      "file_extension": "md",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/CLAUDE.md\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': '@AGENTS.md', 'entity_name': 'text_chunk', 'start_line': 0, 'end_line': 0}",
+    "metadata": {
+      "source_path": "web/CLAUDE.md",
+      "file_name": "CLAUDE.md",
+      "file_extension": "md",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/eslint.config.mjs\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': 'import { defineConfig, globalIgnores } from \"eslint/config\";\\nimpo...",
+    "metadata": {
+      "source_path": "web/eslint.config.mjs",
+      "file_name": "eslint.config.mjs",
+      "file_extension": "mjs",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/next-env.d.ts\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': '/// <reference types=\"next\" />\\n/// <reference types=\"next/image-types...",
+    "metadata": {
+      "source_path": "web/next-env.d.ts",
+      "file_name": "next-env.d.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/next.config.ts\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': 'import type { NextConfig } from \"next\";\\n\\nconst nextConfig: NextConf...",
+    "metadata": {
+      "source_path": "web/next.config.ts",
+      "file_name": "next.config.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/package.json\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': '{\\n  \"name\": \"web\",\\n  \"version\": \"0.1.0\",\\n  \"private\": true,\\n  \"scri...",
+    "metadata": {
+      "source_path": "web/package.json",
+      "file_name": "package.json",
+      "file_extension": "json",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': \"lockfileVersion: '9.0'\\n\\nsettings:\\n  autoInstallPeers: true\\n  excl...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 2\n\n{'content': \".:\\n    dependencies:\\n      framer-motion:\\n        specifier: ^12.3...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 3\n\n{'content': \"'@types/react-dom':\\n        specifier: ^19\\n        version: 19.2.3(...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 4\n\n{'content': \"packages:\\n\\n  '@alloc/quick-lru@5.2.0':\\n    resolution: {integrity:...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 5\n\n{'content': \"'@babel/helper-compilation-targets@7.28.6':\\n    resolution: {integri...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 6\n\n{'content': \"'@babel/helper-string-parser@7.27.1':\\n    resolution: {integrity: sh...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 7\n\n{'content': \"'@babel/template@7.28.6':\\n    resolution: {integrity: sha512-YA6Ma2K...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 8\n\n{'content': \"'@emnapi/wasi-threads@1.2.1':\\n    resolution: {integrity: sha512-uTI...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 9\n\n{'content': \"'@eslint/config-helpers@0.4.2':\\n    resolution: {integrity: sha512-g...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 10\n\n{'content': \"'@eslint/object-schema@2.1.7':\\n    resolution: {integrity: sha512-V...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 11\n\n{'content': \"'@humanwhocodes/module-importer@1.0.1':\\n    resolution: {integrity:...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 12\n\n{'content': \"'@img/sharp-darwin-x64@0.34.5':\\n    resolution: {integrity: sha512-...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 13\n\n{'content': \"'@img/sharp-libvips-linux-arm@1.2.4':\\n    resolution: {integrity: s...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 14\n\n{'content': \"'@img/sharp-libvips-linux-x64@1.2.4':\\n    resolution: {integrity: s...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 15\n\n{'content': \"'@img/sharp-linux-arm@0.34.5':\\n    resolution: {integrity: sha512-9...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 16\n\n{'content': \"'@img/sharp-linux-s390x@0.34.5':\\n    resolution: {integrity: sha512...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 17\n\n{'content': \"'@img/sharp-linuxmusl-x64@0.34.5':\\n    resolution: {integrity: sha5...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 18\n\n{'content': \"'@img/sharp-win32-x64@0.34.5':\\n    resolution: {integrity: sha512-+...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 19\n\n{'content': \"'@jridgewell/trace-mapping@0.3.31':\\n    resolution: {integrity: sha...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 20\n\n{'content': \"'@next/swc-darwin-x64@16.2.6':\\n    resolution: {integrity: sha512-v...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 21\n\n{'content': \"'@next/swc-linux-x64-musl@16.2.6':\\n    resolution: {integrity: sha5...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 22\n\n{'content': \"'@nodelib/fs.stat@2.0.5':\\n    resolution: {integrity: sha512-RkhPPp...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 23\n\n{'content': \"'@rtsao/scc@1.1.0':\\n    resolution: {integrity: sha512-zt6OdqaDoOnJ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 24\n\n{'content': \"'@tailwindcss/oxide-android-arm64@4.3.0':\\n    resolution: {integrit...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 25\n\n{'content': \"'@tailwindcss/oxide-linux-arm-gnueabihf@4.3.0':\\n    resolution: {in...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 26\n\n{'content': \"'@tailwindcss/oxide-linux-x64-musl@4.3.0':\\n    resolution: {integri...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 27\n\n{'content': \"'@tailwindcss/oxide-win32-x64-msvc@4.3.0':\\n    resolution: {integri...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 28\n\n{'content': \"'@types/d3-color@3.1.3':\\n    resolution: {integrity: sha512-iO90sct...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 29\n\n{'content': \"'@types/d3-time@3.0.4':\\n    resolution: {integrity: sha512-yuzZug1n...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 30\n\n{'content': \"'@types/react-dom@19.2.3':\\n    resolution: {integrity: sha512-jp2L/...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 31\n\n{'content': \"'@typescript-eslint/parser@8.59.3':\\n    resolution: {integrity: sha...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 32\n\n{'content': \"'@typescript-eslint/tsconfig-utils@8.59.3':\\n    resolution: {integr...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 33\n\n{'content': \"'@typescript-eslint/typescript-estree@8.59.3':\\n    resolution: {int...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 34\n\n{'content': \"'@unrs/resolver-binding-android-arm-eabi@1.11.1':\\n    resolution: {...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 35\n\n{'content': \"'@unrs/resolver-binding-freebsd-x64@1.11.1':\\n    resolution: {integ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 36\n\n{'content': \"'@unrs/resolver-binding-linux-arm64-musl@1.11.1':\\n    resolution: {...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 37\n\n{'content': \"'@unrs/resolver-binding-linux-s390x-gnu@1.11.1':\\n    resolution: {i...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 38\n\n{'content': \"'@unrs/resolver-binding-win32-arm64-msvc@1.11.1':\\n    resolution: {...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 39\n\n{'content': \"acorn@8.16.0:\\n    resolution: {integrity: sha512-UVJyE9MttOsBQIDKw1...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 40\n\n{'content': \"array-buffer-byte-length@1.0.2:\\n    resolution: {integrity: sha512-...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 41\n\n{'content': \"array.prototype.flatmap@1.3.3:\\n    resolution: {integrity: sha512-Y...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 42\n\n{'content': \"available-typed-arrays@1.0.7:\\n    resolution: {integrity: sha512-wv...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 43\n\n{'content': \"baseline-browser-mapping@2.10.29:\\n    resolution: {integrity: sha51...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 44\n\n{'content': \"call-bind-apply-helpers@1.0.2:\\n    resolution: {integrity: sha512-S...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 45\n\n{'content': \"chalk@4.1.2:\\n    resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBM...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 46\n\n{'content': \"convert-source-map@2.0.0:\\n    resolution: {integrity: sha512-Kvp459...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 47\n\n{'content': \"d3-format@3.1.2:\\n    resolution: {integrity: sha512-AJDdYOdnyRDV5b6...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 48\n\n{'content': \"d3-time-format@4.1.0:\\n    resolution: {integrity: sha512-dJxPBlzC7N...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 49\n\n{'content': \"data-view-byte-length@1.0.2:\\n    resolution: {integrity: sha512-tuh...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 50\n\n{'content': \"decimal.js-light@2.5.1:\\n    resolution: {integrity: sha512-qIMFpTMZ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 51\n\n{'content': \"doctrine@2.1.0:\\n    resolution: {integrity: sha512-35mSku4ZXK0vfCuH...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 52\n\n{'content': \"es-abstract@1.24.2:\\n    resolution: {integrity: sha512-2FpH9Q5i2RRw...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 53\n\n{'content': \"es-set-tostringtag@2.1.0:\\n    resolution: {integrity: sha512-j6vWzf...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 54\n\n{'content': \"escape-string-regexp@4.0.0:\\n    resolution: {integrity: sha512-Ttpc...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 55\n\n{'content': \"eslint-import-resolver-typescript@3.10.1:\\n    resolution: {integrit...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 56\n\n{'content': \"eslint-module-utils@2.12.1:\\n    resolution: {integrity: sha512-L8jS...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 57\n\n{'content': \"eslint-plugin-import@2.32.0:\\n    resolution: {integrity: sha512-whO...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 58\n\n{'content': \"eslint-plugin-react@7.37.5:\\n    resolution: {integrity: sha512-Qteu...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 59\n\n{'content': \"eslint-visitor-keys@5.0.1:\\n    resolution: {integrity: sha512-tD40e...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 60\n\n{'content': \"esrecurse@4.3.0:\\n    resolution: {integrity: sha512-KmfKL3b6G+RXvP8...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 61\n\n{'content': \"fast-json-stable-stringify@2.1.0:\\n    resolution: {integrity: sha51...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 62\n\n{'content': \"fill-range@7.1.1:\\n    resolution: {integrity: sha512-YsGpe3WHLK8ZYi...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 63\n\n{'content': \"framer-motion@12.38.0:\\n    resolution: {integrity: sha512-rFYkY/pig...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 64\n\n{'content': \"generator-function@2.0.1:\\n    resolution: {integrity: sha512-SFdFmI...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 65\n\n{'content': \"get-tsconfig@4.14.0:\\n    resolution: {integrity: sha512-yTb+8DXzDRE...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 66\n\n{'content': \"globalthis@1.0.4:\\n    resolution: {integrity: sha512-DpLKbNU4WylpxJ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 67\n\n{'content': \"has-property-descriptors@1.0.2:\\n    resolution: {integrity: sha512-...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 68\n\n{'content': \"hermes-estree@0.25.1:\\n    resolution: {integrity: sha512-0wUoCcLp+5...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 69\n\n{'content': \"import-fresh@3.3.1:\\n    resolution: {integrity: sha512-TR3KfrTZTYLP...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 70\n\n{'content': \"is-async-function@2.1.1:\\n    resolution: {integrity: sha512-9dgM/cZ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 71\n\n{'content': \"is-core-module@2.16.2:\\n    resolution: {integrity: sha512-evOr8xfXK...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 72\n\n{'content': \"is-generator-function@1.1.2:\\n    resolution: {integrity: sha512-upq...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 73\n\n{'content': \"is-number@7.0.0:\\n    resolution: {integrity: sha512-41Cifkg6e8TylSp...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 74\n\n{'content': \"is-symbol@1.1.1:\\n    resolution: {integrity: sha512-9gGx6GTtCQM73Bg...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 75\n\n{'content': \"isarray@2.0.5:\\n    resolution: {integrity: sha512-xHjhDr3cNBK0BzdUJ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 76\n\n{'content': \"jsesc@3.1.0:\\n    resolution: {integrity: sha512-/sM3dO2FOzXjKQhJuo0...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 77\n\n{'content': \"json5@2.2.3:\\n    resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPo...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 78\n\n{'content': \"levn@0.4.1:\\n    resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evc...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 79\n\n{'content': \"lightningcss-freebsd-x64@1.32.0:\\n    resolution: {integrity: sha512...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 80\n\n{'content': \"lightningcss-linux-x64-gnu@1.32.0:\\n    resolution: {integrity: sha5...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 81\n\n{'content': \"lightningcss@1.32.0:\\n    resolution: {integrity: sha512-NXYBzinNrbl...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 82\n\n{'content': \"lucide-react@1.16.0:\\n    resolution: {integrity: sha512-dYwyPzb4MEK...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 83\n\n{'content': 'minimatch@10.2.5:\\n    resolution: {integrity: sha512-MULkVLfKGYDFYe...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 84\n\n{'content': 'nanoid@3.3.12:\\n    resolution: {integrity: sha512-ZB9RH/39qpq5Vu6Y+...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 85\n\n{'content': \"next@16.2.6:\\n    resolution: {integrity: sha512-qOVgKJg1+At15NpeUP+...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 86\n\n{'content': \"node-releases@2.0.44:\\n    resolution: {integrity: sha512-5WUyunoPMs...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 87\n\n{'content': \"object.entries@1.1.9:\\n    resolution: {integrity: sha512-8u/hfXFRBD...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 88\n\n{'content': \"own-keys@1.0.1:\\n    resolution: {integrity: sha512-qFOyK5PjiWZd+QQI...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 89\n\n{'content': \"path-key@3.1.1:\\n    resolution: {integrity: sha512-ojmeN0qd+y0jszEt...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 90\n\n{'content': \"possible-typed-array-names@1.1.0:\\n    resolution: {integrity: sha51...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 91\n\n{'content': \"punycode@2.3.1:\\n    resolution: {integrity: sha512-vYt7UD1U9Wg6138s...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 92\n\n{'content': \"react-redux@9.2.0:\\n    resolution: {integrity: sha512-ROY9fvHhwOD9y...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 93\n\n{'content': \"redux-thunk@3.1.0:\\n    resolution: {integrity: sha512-NW2r5T6ksUKXC...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 94\n\n{'content': \"resolve-from@4.0.0:\\n    resolution: {integrity: sha512-pb/MYmXstAky...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 95\n\n{'content': \"safe-array-concat@1.1.4:\\n    resolution: {integrity: sha512-wtZlHyO...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 96\n\n{'content': \"semver@7.8.0:\\n    resolution: {integrity: sha512-AcM7dV/5ul4EekoQ29...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 97\n\n{'content': \"shebang-command@2.0.0:\\n    resolution: {integrity: sha512-kHxr2zZpY...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 98\n\n{'content': \"side-channel@1.1.0:\\n    resolution: {integrity: sha512-ZX99e6tRweoU...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 99\n\n{'content': \"string.prototype.matchall@4.0.12:\\n    resolution: {integrity: sha51...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 100\n\n{'content': \"strip-bom@3.0.0:\\n    resolution: {integrity: sha512-vavAMRXOgBVNF6...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 101\n\n{'content': \"supports-preserve-symlinks-flag@1.0.0:\\n    resolution: {integrity:...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 102\n\n{'content': \"to-regex-range@5.0.1:\\n    resolution: {integrity: sha512-65P7iz6X5...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 103\n\n{'content': \"typed-array-buffer@1.0.3:\\n    resolution: {integrity: sha512-nAYYw...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 104\n\n{'content': \"typescript-eslint@8.59.3:\\n    resolution: {integrity: sha512-Kgusg...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 105\n\n{'content': \"update-browserslist-db@1.2.3:\\n    resolution: {integrity: sha512-J...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 106\n\n{'content': \"which-builtin-type@1.2.1:\\n    resolution: {integrity: sha512-6iBcz...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 107\n\n{'content': \"yallist@3.1.1:\\n    resolution: {integrity: sha512-a4UGQaWPH59mOXUY...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 108\n\n{'content': \"'@babel/compat-data@7.29.3': {}\\n\\n  '@babel/core@7.29.0':\\n    dep...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 109\n\n{'content': \"'@babel/helper-compilation-targets@7.28.6':\\n    dependencies:\\n   ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 110\n\n{'content': \"'@babel/parser@7.29.3':\\n    dependencies:\\n      '@babel/types': 7...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 111\n\n{'content': \"'@emnapi/wasi-threads@1.2.1':\\n    dependencies:\\n      tslib: 2.8....",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 112\n\n{'content': \"'@eslint/js@9.39.4': {}\\n\\n  '@eslint/object-schema@2.1.7': {}\\n\\n ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 113\n\n{'content': \"'@img/sharp-libvips-linux-arm64@1.2.4':\\n    optional: true\\n\\n  '@...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 114\n\n{'content': \"'@img/sharp-linux-riscv64@0.34.5':\\n    optionalDependencies:\\n    ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 115\n\n{'content': \"'@img/sharp-win32-x64@0.34.5':\\n    optional: true\\n\\n  '@jridgewel...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 116\n\n{'content': \"'@next/swc-linux-arm64-gnu@16.2.6':\\n    optional: true\\n\\n  '@next...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 117\n\n{'content': \"'@nolyfill/is-core-module@1.0.39': {}\\n\\n  '@reduxjs/toolkit@2.11.2...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 118\n\n{'content': \"'@tailwindcss/oxide-darwin-arm64@4.3.0':\\n    optional: true\\n\\n  '...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 119\n\n{'content': \"'@tailwindcss/oxide-win32-x64-msvc@4.3.0':\\n    optional: true\\n\\n ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 120\n\n{'content': \"'@tybys/wasm-util@0.10.2':\\n    dependencies:\\n      tslib: 2.8.1\\n...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 121\n\n{'content': \"'@types/use-sync-external-store@0.0.6': {}\\n\\n  '@typescript-eslint...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 122\n\n{'content': \"'@typescript-eslint/parser@8.59.3(eslint@9.39.4(jiti@2.7.0))(typesc...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 123\n\n{'content': \"'@typescript-eslint/type-utils@8.59.3(eslint@9.39.4(jiti@2.7.0))(ty...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 124\n\n{'content': \"'@typescript-eslint/types@8.59.3': {}\\n\\n  '@typescript-eslint/type...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 125\n\n{'content': \"'@typescript-eslint/utils@8.59.3(eslint@9.39.4(jiti@2.7.0))(typescr...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 126\n\n{'content': \"'@unrs/resolver-binding-freebsd-x64@1.11.1':\\n    optional: true\\n\\...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 127\n\n{'content': \"'@unrs/resolver-binding-win32-arm64-msvc@1.11.1':\\n    optional: tr...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 128\n\n{'content': 'array.prototype.findlast@1.2.5:\\n    dependencies:\\n      call-bind...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 129\n\n{'content': 'arraybuffer.prototype.slice@1.0.4:\\n    dependencies:\\n      array-...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 130\n\n{'content': 'braces@3.0.3:\\n    dependencies:\\n      fill-range: 7.1.1\\n\\n  brow...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 131\n\n{'content': 'color-name@1.1.4: {}\\n\\n  concat-map@0.0.1: {}\\n\\n  convert-source-...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 132\n\n{'content': 'data-view-byte-length@1.0.2:\\n    dependencies:\\n      call-bound: ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 133\n\n{'content': 'electron-to-chromium@1.5.356: {}\\n\\n  emoji-regex@9.2.2: {}\\n\\n  en...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 134\n\n{'content': 'es-abstract@1.24.2:\\n    dependencies:\\n      array-buffer-byte-len...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 135\n\n{'content': 'is-shared-array-buffer: 1.0.4\\n      is-string: 1.1.1\\n      is-typ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 136\n\n{'content': 'es-define-property@1.0.1: {}\\n\\n  es-errors@1.3.0: {}\\n\\n  es-itera...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 137\n\n{'content': 'es-toolkit@1.46.1: {}\\n\\n  escalade@3.2.0: {}\\n\\n  escape-string-re...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 138\n\n{'content': \"eslint-config-next@16.2.6(@typescript-eslint/parser@8.59.3(eslint@9...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 139\n\n{'content': \"typescript: 5.9.3\\n    transitivePeerDependencies:\\n      - '@types...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 140\n\n{'content': \"eslint-import-resolver-node@0.3.10:\\n    dependencies:\\n      debug...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 141\n\n{'content': \"eslint-module-utils@2.12.1(@typescript-eslint/parser@8.59.3(eslint@...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 142\n\n{'content': \"eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.59.3(eslint...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 143\n\n{'content': \"string.prototype.trimend: 1.0.9\\n      tsconfig-paths: 3.15.0\\n    ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 144\n\n{'content': \"eslint-plugin-jsx-a11y@6.10.2(eslint@9.39.4(jiti@2.7.0)):\\n    depe...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 145\n\n{'content': 'eslint-plugin-react@7.37.5(eslint@9.39.4(jiti@2.7.0)):\\n    depende...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 146\n\n{'content': \"eslint@9.39.4(jiti@2.7.0):\\n    dependencies:\\n      '@eslint-commu...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 147\n\n{'content': 'is-glob: 4.0.3\\n      json-stable-stringify-without-jsonify: 1.0.1\\...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 148\n\n{'content': \"espree@10.4.0:\\n    dependencies:\\n      acorn: 8.16.0\\n      acorn...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 149\n\n{'content': 'find-up@5.0.0:\\n    dependencies:\\n      locate-path: 6.0.0\\n      ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 150\n\n{'content': 'functions-have-names@1.2.3: {}\\n\\n  generator-function@2.0.1: {}\\n\\...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 151\n\n{'content': 'gopd@1.2.0: {}\\n\\n  graceful-fs@4.2.11: {}\\n\\n  has-bigints@1.1.0: ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 152\n\n{'content': 'is-async-function@2.1.1:\\n    dependencies:\\n      async-function: ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 153\n\n{'content': 'is-glob@4.0.3:\\n    dependencies:\\n      is-extglob: 2.1.1\\n\\n  is-...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 154\n\n{'content': 'isarray@2.0.5: {}\\n\\n  isexe@2.0.0: {}\\n\\n  iterator.prototype@1.1....",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 155\n\n{'content': 'levn@0.4.1:\\n    dependencies:\\n      prelude-ls: 1.2.1\\n      type...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 156\n\n{'content': \"lightningcss-win32-x64-msvc@1.32.0:\\n    optional: true\\n\\n  lightn...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 157\n\n{'content': \"magic-string@0.30.21:\\n    dependencies:\\n      '@jridgewell/source...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 158\n\n{'content': \"ms@2.1.3: {}\\n\\n  nanoid@3.3.12: {}\\n\\n  napi-postinstall@0.3.4: {}...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 159\n\n{'content': 'node-exports-info@1.6.0:\\n    dependencies:\\n      array.prototype....",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 160\n\n{'content': 'object.values@1.2.1:\\n    dependencies:\\n      call-bind: 1.0.9\\n  ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 161\n\n{'content': \"postcss@8.5.14:\\n    dependencies:\\n      nanoid: 3.3.12\\n      pic...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 162\n\n{'content': \"react@19.2.4: {}\\n\\n  recharts@3.8.1(@types/react@19.2.14)(react-do...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 163\n\n{'content': 'redux-thunk@3.1.0(redux@5.0.1):\\n    dependencies:\\n      redux: 5....",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 164\n\n{'content': 'reusify@1.1.0: {}\\n\\n  run-parallel@1.2.0:\\n    dependencies:\\n    ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 165\n\n{'content': 'set-proto@1.0.0:\\n    dependencies:\\n      dunder-proto: 1.0.1\\n   ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 166\n\n{'content': \"sharp@0.34.5:\\n    dependencies:\\n      '@img/colour': 1.1.0\\n     ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 167\n\n{'content': \"'@img/sharp-linuxmusl-arm64': 0.34.5\\n      '@img/sharp-linuxmusl-x...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 168\n\n{'content': 'shebang-command@2.0.0:\\n    dependencies:\\n      shebang-regex: 3.0...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 169\n\n{'content': 'string.prototype.includes@2.0.1:\\n    dependencies:\\n      call-bin...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 170\n\n{'content': \"string.prototype.trimend@1.0.9:\\n    dependencies:\\n      call-bind...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 171\n\n{'content': \"ts-api-utils@2.5.0(typescript@5.9.3):\\n    dependencies:\\n      typ...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 172\n\n{'content': \"typed-array-length@1.0.7:\\n    dependencies:\\n      call-bind: 1.0....",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 173\n\n{'content': 'typescript@5.9.3: {}\\n\\n  unbox-primitive@1.1.0:\\n    dependencies:...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 174\n\n{'content': \"unrs-resolver@1.11.1:\\n    dependencies:\\n      napi-postinstall: 0...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 175\n\n{'content': \"'@unrs/resolver-binding-wasm32-wasi': 1.11.1\\n      '@unrs/resolver...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 176\n\n{'content': \"update-browserslist-db@1.2.3(browserslist@4.28.2):\\n    dependencie...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 177\n\n{'content': 'which-builtin-type@1.2.1:\\n    dependencies:\\n      call-bound: 1.0...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-lock.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 178\n\n{'content': 'zod-validation-error@4.0.2(zod@4.4.3):\\n    dependencies:\\n      zo...",
+    "metadata": {
+      "source_path": "web/pnpm-lock.yaml",
+      "file_name": "pnpm-lock.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/pnpm-workspace.yaml\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': 'ignoredBuiltDependencies:\\n  - sharp\\n  - unrs-resolver', 'entit...",
+    "metadata": {
+      "source_path": "web/pnpm-workspace.yaml",
+      "file_name": "pnpm-workspace.yaml",
+      "file_extension": "yaml",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/postcss.config.mjs\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': 'const config = {\\n  plugins: {\\n    \"@tailwindcss/postcss\": {},\\n...",
+    "metadata": {
+      "source_path": "web/postcss.config.mjs",
+      "file_name": "postcss.config.mjs",
+      "file_extension": "mjs",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/README.md\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': 'This is a [Next.js](https://nextjs.org) project bootstrapped with [`create...",
+    "metadata": {
+      "source_path": "web/README.md",
+      "file_name": "README.md",
+      "file_extension": "md",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/README.md\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 2\n\n{'content': 'You can check out [the Next.js GitHub repository](https://github.com/verce...",
+    "metadata": {
+      "source_path": "web/README.md",
+      "file_name": "README.md",
+      "file_extension": "md",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/tsconfig.json\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': '{\\n  \"compilerOptions\": {\\n    \"target\": \"ES2017\",\\n    \"lib\": [\"dom\",...",
+    "metadata": {
+      "source_path": "web/tsconfig.json",
+      "file_name": "tsconfig.json",
+      "file_extension": "json",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/proxy.ts\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': 'export async function proxy(request: NextRequest) {\\n  return authMiddl...",
+    "metadata": {
+      "source_path": "web/src/proxy.ts",
+      "file_name": "proxy.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/globals.css\n// Code Block Group: frontend_ui:infrastructure:utility \n// Chunk Identifier: 1\n\n{'content': '@import \"tailwindcss\";\\n\\nhtml {\\n  color-scheme: light;\\n}\\n\\n:...",
+    "metadata": {
+      "source_path": "web/src/app/globals.css",
+      "file_name": "globals.css",
+      "file_extension": "css",
+      "code_group": "frontend_ui:infrastructure:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/layout.tsx\n// Code Block Group: frontend_ui:infrastructure:view_page \n// Chunk Identifier: 1\n\n{'content': 'export default function RootLayout({\\n  children,\\n}: Readonly<...",
+    "metadata": {
+      "source_path": "web/src/app/layout.tsx",
+      "file_name": "layout.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:infrastructure:view_page"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/page.tsx\n// Code Block Group: frontend_ui:infrastructure:view_page \n// Chunk Identifier: 1\n\n{'content': \"export default function Home() {\\n  redirect('/auth/login');\\n}\",...",
+    "metadata": {
+      "source_path": "web/src/app/page.tsx",
+      "file_name": "page.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:infrastructure:view_page"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/auth/actions.ts\n// Code Block Group: frontend_ui:auth:server_action \n// Chunk Identifier: 1\n\n{'content': 'export async function loginAction(\\n\\t_prevState: AuthActionStat...",
+    "metadata": {
+      "source_path": "web/src/app/auth/actions.ts",
+      "file_name": "actions.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:auth:server_action"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/auth/actions.ts\n// Code Block Group: frontend_ui:auth:server_action \n// Chunk Identifier: 2\n\n{'content': 'export async function registerAction(\\n\\t_prevState: AuthActionS...",
+    "metadata": {
+      "source_path": "web/src/app/auth/actions.ts",
+      "file_name": "actions.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:auth:server_action"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/auth/layout.tsx\n// Code Block Group: frontend_ui:auth:view_page \n// Chunk Identifier: 1\n\n{'content': 'export default function AuthLayout({ children }: AuthLayoutProps) {\\...",
+    "metadata": {
+      "source_path": "web/src/app/auth/layout.tsx",
+      "file_name": "layout.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:auth:view_page"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/auth/login/page.tsx\n// Code Block Group: frontend_ui:auth:view_page \n// Chunk Identifier: 1\n\n{'content': 'export default function LoginPage() {\\n  const [state, formActio...",
+    "metadata": {
+      "source_path": "web/src/app/auth/login/page.tsx",
+      "file_name": "page.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:auth:view_page"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/auth/register/page.tsx\n// Code Block Group: frontend_ui:auth:view_page \n// Chunk Identifier: 1\n\n{'content': 'export default function RegisterPage() {\\n  const [state, for...",
+    "metadata": {
+      "source_path": "web/src/app/auth/register/page.tsx",
+      "file_name": "page.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:auth:view_page"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/actions.ts\n// Code Block Group: frontend_ui:infrastructure:server_action \n// Chunk Identifier: 1\n\n{'content': 'export async function logoutAction(): Promise<LogoutAc...",
+    "metadata": {
+      "source_path": "web/src/app/home/actions.ts",
+      "file_name": "actions.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:infrastructure:server_action"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/layout.tsx\n// Code Block Group: frontend_ui:infrastructure:view_page \n// Chunk Identifier: 1\n\n{'content': 'function HomeShell({ children }: { children: ReactNode }) ...",
+    "metadata": {
+      "source_path": "web/src/app/home/layout.tsx",
+      "file_name": "layout.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:infrastructure:view_page"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/layout.tsx\n// Code Block Group: frontend_ui:infrastructure:view_page \n// Chunk Identifier: 2\n\n{'content': 'export default function HomeLayout({ children }: { childre...",
+    "metadata": {
+      "source_path": "web/src/app/home/layout.tsx",
+      "file_name": "layout.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:infrastructure:view_page"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/page.tsx\n// Code Block Group: frontend_ui:infrastructure:view_page \n// Chunk Identifier: 1\n\n{'content': 'export default function HomePage() {\\n\\tredirect(\"/home/dash...",
+    "metadata": {
+      "source_path": "web/src/app/home/page.tsx",
+      "file_name": "page.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:infrastructure:view_page"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/credits/page.tsx\n// Code Block Group: frontend_ui:infrastructure:view_page \n// Chunk Identifier: 1\n\n{'content': 'export default function CreditsPage() {\\n  return (\\...",
+    "metadata": {
+      "source_path": "web/src/app/home/credits/page.tsx",
+      "file_name": "page.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:infrastructure:view_page"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/dash/constants.ts\n// Code Block Group: frontend_ui:dashboard:utility \n// Chunk Identifier: 1\n\n{'content': 'export const notepadChartData = [\\n  { name: \"Your Notepad...",
+    "metadata": {
+      "source_path": "web/src/app/home/dash/constants.ts",
+      "file_name": "constants.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:dashboard:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/dash/page.tsx\n// Code Block Group: frontend_ui:dashboard:view_page \n// Chunk Identifier: 1\n\n{'content': 'export default function DashboardPage() {\\n  const [loading,...",
+    "metadata": {
+      "source_path": "web/src/app/home/dash/page.tsx",
+      "file_name": "page.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:dashboard:view_page"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/constants.ts\n// Code Block Group: frontend_ui:notepad:utility \n// Chunk Identifier: 1\n\n{'content': 'import type { Notepad } from \"./types\";\\n\\n// \u2500\u2500\u2500 Mock note...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/constants.ts",
+      "file_name": "constants.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:notepad:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/constants.ts\n// Code Block Group: frontend_ui:notepad:utility \n// Chunk Identifier: 2\n\n{'content': 'export const MOCK_NOTEPADS: Notepad[] = [\\n  {\\n    id: 1,\\...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/constants.ts",
+      "file_name": "constants.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:notepad:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/constants.ts\n// Code Block Group: frontend_ui:notepad:utility \n// Chunk Identifier: 3\n\n{'content': 'created_at: \"2026-05-17T06:00:00Z\",\\n    updated_at: \"2026-...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/constants.ts",
+      "file_name": "constants.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:notepad:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/constants.ts\n// Code Block Group: frontend_ui:notepad:utility \n// Chunk Identifier: 4\n\n{'content': '{ id: 13, notepad_id: 3, label: \"The Pragmatic Programmer\",...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/constants.ts",
+      "file_name": "constants.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:notepad:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/constants.ts\n// Code Block Group: frontend_ui:notepad:utility \n// Chunk Identifier: 5\n\n{'content': '{ id: 20, notepad_id: 4, label: \"Set up staging environment...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/constants.ts",
+      "file_name": "constants.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:notepad:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/constants.ts\n// Code Block Group: frontend_ui:notepad:utility \n// Chunk Identifier: 6\n\n{'content': 'created_at: \"2026-05-17T06:00:00Z\",\\n    updated_at: \"2026-...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/constants.ts",
+      "file_name": "constants.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:notepad:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/constants.ts\n// Code Block Group: frontend_ui:notepad:utility \n// Chunk Identifier: 7\n\n{'content': '{ id: 31, notepad_id: 7, label: \"Learn \\'Clair de Lune\\' in...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/constants.ts",
+      "file_name": "constants.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:notepad:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/constants.ts\n// Code Block Group: frontend_ui:notepad:utility \n// Chunk Identifier: 8\n\n{'content': '],\\n  },\\n  {\\n    id: 9,\\n    user_id: 1,\\n    title: \"Sid...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/constants.ts",
+      "file_name": "constants.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:notepad:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/page.tsx\n// Code Block Group: frontend_ui:notepad:view_page \n// Chunk Identifier: 1\n\n{'content': 'export default function NotesPage() {\\n  const [createModalOp...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/page.tsx",
+      "file_name": "page.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:view_page"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/types.ts\n// Code Block Group: frontend_ui:notepad:utility \n// Chunk Identifier: 1\n\n{'content': '// TaskMode: Mirrors Task model\\'s \\'mode\\' property.\\nexport t...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/types.ts",
+      "file_name": "types.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:notepad:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NewNotepadModal.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 1\n\n{'content': 'const emptyTask = (): Task => ({\\n ...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NewNotepadModal.tsx",
+      "file_name": "NewNotepadModal.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NewNotepadModal.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 2\n\n{'content': 'function isTaskDirty(task: Task): b...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NewNotepadModal.tsx",
+      "file_name": "NewNotepadModal.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NewNotepadModal.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 3\n\n{'content': 'function isDirty(state: DraftState)...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NewNotepadModal.tsx",
+      "file_name": "NewNotepadModal.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NewNotepadModal.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 4\n\n{'content': 'function draftReducer(state: DraftS...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NewNotepadModal.tsx",
+      "file_name": "NewNotepadModal.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NewNotepadModal.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 5\n\n{'content': 'export function NewNotepadModal({\\n...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NewNotepadModal.tsx",
+      "file_name": "NewNotepadModal.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NewNotepadTask.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 1\n\n{'content': '// \u2500\u2500\u2500 TaskRow \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NewNotepadTask.tsx",
+      "file_name": "NewNotepadTask.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NewNotepadTask.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 2\n\n{'content': 'const handleCheckToggle = useCallbac...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NewNotepadTask.tsx",
+      "file_name": "NewNotepadTask.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NewNotepadTask.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 3\n\n{'content': '<button\\n        type=\"button\"\\n    ...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NewNotepadTask.tsx",
+      "file_name": "NewNotepadTask.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NewNotepadTask.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 4\n\n{'content': '<button\\n        type=\"button\"\\n    ...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NewNotepadTask.tsx",
+      "file_name": "NewNotepadTask.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NotepadCard.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 1\n\n{'content': 'function TaskItem({ task }: TaskItemPro...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NotepadCard.tsx",
+      "file_name": "NotepadCard.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NotepadCard.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 2\n\n{'content': 'export function NotepadCard({\\n  notepa...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NotepadCard.tsx",
+      "file_name": "NotepadCard.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NotepadDeleteModal.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 1\n\n{'content': 'const NotepadDeleteModal = ({\\n ...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NotepadDeleteModal.tsx",
+      "file_name": "NotepadDeleteModal.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NotepadModal.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 1\n\n{'content': 'function areTasksEqual(a: Task[], b: T...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NotepadModal.tsx",
+      "file_name": "NotepadModal.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NotepadModal.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 2\n\n{'content': 'function TaskRow({\\n  task,\\n  index,\\...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NotepadModal.tsx",
+      "file_name": "NotepadModal.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/NotepadModal.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 3\n\n{'content': 'export function NotepadModal({\\n  open...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/NotepadModal.tsx",
+      "file_name": "NotepadModal.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/notes/_components/TaskStatusIndicator.tsx\n// Code Block Group: frontend_ui:notepad:ui_component \n// Chunk Identifier: 1\n\n{'content': 'export function TaskStatusIndic...",
+    "metadata": {
+      "source_path": "web/src/app/home/notes/_components/TaskStatusIndicator.tsx",
+      "file_name": "TaskStatusIndicator.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:notepad:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/_components/SidebarContext.tsx\n// Code Block Group: frontend_ui:infrastructure:ui_component \n// Chunk Identifier: 1\n\n{'content': 'export function SidebarProvider({ c...",
+    "metadata": {
+      "source_path": "web/src/app/home/_components/SidebarContext.tsx",
+      "file_name": "SidebarContext.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:infrastructure:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/_components/SidebarContext.tsx\n// Code Block Group: frontend_ui:infrastructure:ui_component \n// Chunk Identifier: 2\n\n{'content': 'export function useSidebar() {\\n  c...",
+    "metadata": {
+      "source_path": "web/src/app/home/_components/SidebarContext.tsx",
+      "file_name": "SidebarContext.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:infrastructure:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/app/home/_components/SidebarNavigation.tsx\n// Code Block Group: frontend_ui:infrastructure:ui_component \n// Chunk Identifier: 1\n\n{'content': 'export default function SidebarN...",
+    "metadata": {
+      "source_path": "web/src/app/home/_components/SidebarNavigation.tsx",
+      "file_name": "SidebarNavigation.tsx",
+      "file_extension": "tsx",
+      "code_group": "frontend_ui:infrastructure:ui_component"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/middleware/auth.ts\n// Code Block Group: frontend_ui:auth:middleware \n// Chunk Identifier: 1\n\n{'content': 'function getAccessToken(request: NextRequest) {\\n  const cookieValue...",
+    "metadata": {
+      "source_path": "web/src/middleware/auth.ts",
+      "file_name": "auth.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:auth:middleware"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/middleware/auth.ts\n// Code Block Group: frontend_ui:auth:middleware \n// Chunk Identifier: 2\n\n{'content': 'export function authMiddleware(request: NextRequest) {\\n  const resp...",
+    "metadata": {
+      "source_path": "web/src/middleware/auth.ts",
+      "file_name": "auth.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:auth:middleware"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/utils/api.ts\n// Code Block Group: frontend_ui:global_shared:utility \n// Chunk Identifier: 1\n\n{'content': 'export const API_BASE =\\n  process.env.NEXT_PUBLIC_API_URL ?? \"http:...",
+    "metadata": {
+      "source_path": "web/src/utils/api.ts",
+      "file_name": "api.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:global_shared:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/utils/auth.ts\n// Code Block Group: frontend_ui:auth:utility \n// Chunk Identifier: 1\n\n{'content': 'function getToken(): string | null {\\n  if (typeof window === \"undefined\") r...",
+    "metadata": {
+      "source_path": "web/src/utils/auth.ts",
+      "file_name": "auth.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:auth:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/utils/auth.ts\n// Code Block Group: frontend_ui:auth:utility \n// Chunk Identifier: 2\n\n{'content': 'export function authHeaders(): HeadersInit {\\n  const token = getToken();\\n ...",
+    "metadata": {
+      "source_path": "web/src/utils/auth.ts",
+      "file_name": "auth.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:auth:utility"
+    }
+  },
+  {
+    "page_content": "// File Location: web/src/utils/motion.ts\n// Code Block Group: frontend_ui:global_shared:utility \n// Chunk Identifier: 1\n\n{'content': 'export const containerVariants = {\\n  hidden: { opacity: 0 },\\n  ...",
+    "metadata": {
+      "source_path": "web/src/utils/motion.ts",
+      "file_name": "motion.ts",
+      "file_extension": "ts",
+      "code_group": "frontend_ui:global_shared:utility"
+    }
+  }
+]
