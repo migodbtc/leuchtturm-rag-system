@@ -3,8 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Conversation;
+use App\Models\Message;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +16,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+            # Test user
+            $testUser = User::factory()->create([
+                'name'          =>      'Gustavo Fring Batumbakal',
+                'email'         =>      'gfbatumbakal@gmail.com',
+                'password'      =>      Hash::make('lospolloshermanos'),
+            ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-    }
+            # Mock data for test user
+            Conversation::factory(5)->for($testUser)->create();
+            Message::factory(30)->create([
+                'conversation_id' => Conversation::where('user_id', $testUser->id)->inRandomOrder()->first()->id,
+            ]);
+
+            # Other mock data
+            User::factory(10)->create();
+            Conversation::factory(15)->create();
+            Message::factory(90)->create();
+            }
 }

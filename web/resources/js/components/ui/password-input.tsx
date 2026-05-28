@@ -23,7 +23,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, Omit<React.ComponentPro
                     tabIndex={-1}
                     aria-label={show ? 'Hide password' : 'Show password'}
                     onClick={() => setShow((v) => !v)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-600 transition-colors duration-200 hover:text-amber-400 focus:outline-none"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-slate-600 transition-colors duration-200 hover:text-amber-400 focus:outline-none"
                 >
                     {show ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>

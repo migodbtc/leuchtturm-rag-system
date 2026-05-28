@@ -38,8 +38,17 @@ class HandleInertiaRequests extends Middleware
     {
         [$message, $author] = str(Inspiring::quotes()->random())->explode('-');
 
+        $shared_parent = parent::share($request);
+
+        # Conversation data about the user is shared on authentication routes 
+        # Thus, checking of user() is true. Additionally, latest conversations only 
+        # get called.
+        if ($request->user()) {
+            $shared_parent['conversations'] = $request->user()->conversations()->latest()->limit(10)->get();
+        };
+
         return array_merge(parent::share($request), [
-            ...parent::share($request),
+            ...$shared_parent,
             'name' => config('app.name'),
             'quote' => ['message' => trim($message), 'author' => trim($author)],
             'auth' => [

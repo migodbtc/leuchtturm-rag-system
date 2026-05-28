@@ -2,8 +2,8 @@ import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
-import { type NavItem } from '@/types';
-import { Link } from '@inertiajs/react';
+import { Conversation, SharedData, type NavItem } from '@/types';
+import { Link, usePage } from '@inertiajs/react';
 import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
 import AppLogo from './app-logo';
 
@@ -29,9 +29,16 @@ const footerNavItems: NavItem[] = [
 ];
 
 export function AppSidebar() {
+    // Call conversation data of the currently logged in user to be rendered
+    // as the chats section of the sidebar
+    const page = usePage();
+    const { conversations } = page.props as unknown as SharedData;
+
+    const conversationItems: Conversation[] = conversations ?? [];
+
     return (
-        <Sidebar collapsible="icon" variant="inset">
-            <SidebarHeader>
+        <Sidebar collapsible="icon" variant="inset" className="">
+            <SidebarHeader className="pb-3">
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
@@ -44,7 +51,7 @@ export function AppSidebar() {
             </SidebarHeader>
 
             <SidebarContent>
-                <NavMain items={mainNavItems} />
+                <NavMain conversationItems={conversationItems} />
             </SidebarContent>
 
             <SidebarFooter>

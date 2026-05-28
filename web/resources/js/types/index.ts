@@ -21,20 +21,43 @@ export interface NavItem {
     isActive?: boolean;
 }
 
+// Shared Middleware Data
 export interface SharedData {
     name: string;
     quote: { message: string; author: string };
     auth: Auth;
+    conversations?: Conversation[];
     [key: string]: unknown;
+}
+
+// PHP Models
+export interface Message {
+    id: number;
+    conversation_id: number;
+    owner: 'user' | 'bot';
+    message: string;
+    created_at: string;
+    updated_at: string;
+    conversation?: Conversation;
+}
+
+export interface Conversation {
+    id: number;
+    user_id: number;
+    title: string;
+    created_at: string;
+    updated_at: string;
+    user?: User;
+    messages?: Message[];
 }
 
 export interface User {
     id: number;
     name: string;
     email: string;
-    avatar?: string;
     email_verified_at: string | null;
     created_at: string;
     updated_at: string;
-    [key: string]: unknown; // This allows for additional properties...
+    conversations?: Conversation[];
+    remember_token?: string;
 }

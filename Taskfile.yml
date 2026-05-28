@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 tasks:
   # Yellowpad Commands
@@ -11,7 +11,7 @@ tasks:
   yellowpad:client:dev:
     desc: "Start up the Nextjs development server with custom port"
     dir: app/web
-    cmds: 
+    cmds:
       - pnpm dev -p 3001
 
   yellowpad:server:dev:
@@ -25,3 +25,15 @@ tasks:
     dir: app/server
     cmds:
       - poetry run pytest -v
+
+  leuchtturm:web:ui:
+    desc: "Run the Inertia/React.js view for Leuchtturm's web chat application."
+    dir: web
+    cmds:
+      - pnpm dev
+
+  leuchtturm:web:server:
+    desc: "Run the Laravel backend for Leuchtturm's web chat application"
+    dir: web
+    cmds:
+      - php artisan serve
