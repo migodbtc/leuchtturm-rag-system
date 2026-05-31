@@ -24,7 +24,8 @@ class Sumerian():
     # Constructor
     def __init__(
             self,
-            repository_path: str = "./app"
+            repository_path: str = "./app",
+            root_path: str | None = None
         ):
         # Pre-run metrics
         # print(f"Working directory: {os.getcwd()}")
@@ -35,36 +36,42 @@ class Sumerian():
         if len(os.listdir(repository_path)) <= 0:
             raise FileNotFoundError(f"The repository at {repository_path} must have at LEAST 1 file.")
         
+        # Determine the set root directory whether user-set or
+        # going for default 
+        if root_path is None:
+            root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        else:
+            root_path = os.path.abspath(root_path)
+        
         # --- Main Configurations ---
         self.repository_path: str = repository_path
+        self.root_path: str = root_path
+
         self.new_documents: list[Document] = []
 
         self.EMBEDDING_MODEL = "nomic-embed-text"
         self.GENERATIVE_MODEL = "qwen2.5:3b"
         self.GENERATIVE_MODEL_2 = "gemini-2.5-flash"
 
-        self.embeddings = OllamaEmbeddings(
-            model=self.EMBEDDING_MODEL
-        )
-        self.client = ChatOllama(
-            model=self.GENERATIVE_MODEL,
-            num_predict=128,
-            num_ctx=2500,
-            temperature=0.2
-        )
-        self.client_2 = ChatGoogleGenerativeAI(
-            model=self.GENERATIVE_MODEL_2,
-            api_key=os.getenv('GOOGLE_API_KEY'), 
-            
-        )
-        self.store = Chroma(
-            persist_directory='./server/pipeline/db',
-            embedding_function=self.embeddings
-        )
+        # Lazy-load clients to avoid startup hangs
+        self._embeddings = None
+        self._client = None
+        self._client_2 = None
+        self._store = None
+
+        # make directories for the caches + db
+        db_path = os.path.join(root_path, "server", "db")
+        cache_dir = os.path.join(root_path, "server", "cache")
+
+        os.makedirs(db_path, exist_ok=True)
+        os.makedirs(cache_dir, exist_ok=True)
+        
+        self.db_path = db_path
+        self.cache_dir = cache_dir
 
         # --- Cache Configurations ---
-        self.DOCUMENT_CACHE_PATH: str = "./server/pipeline/cache/documents.json"
-        self.CHUNK_CACHE_PATH: str = "./server/pipeline/cache/chunks.json" # TBA
+        self.DOCUMENT_CACHE_PATH: str = os.path.join(cache_dir, "documents.json")
+        self.CHUNK_CACHE_PATH: str = os.path.join(cache_dir, "chunks.json")
 
         self.document_cache: dict[str, str] = self._load_cache_document()
         self.chunk_cache: dict[str, dict] = self._load_cache_chunk()
@@ -117,6 +124,49 @@ class Sumerian():
         # --- Chunking Configuration ---
         self.MAX_CHUNKING_ALLOWED: int = 1738
         self.BATCH_SIZE: int = 50
+    
+    # Lazy-loading properties: claude haiku introduced me to this concept so that
+    # i can remove the slow startup issue I have with my FastAPI and instead the 
+    # startup issue (caused by models + vector db) occurs in /rag/query
+    # because they're primarily used in that route
+    @property
+    def embeddings(self):
+        if self._embeddings is None:
+            self._embeddings = OllamaEmbeddings(model=self.EMBEDDING_MODEL)
+        return self._embeddings
+    
+    @property
+    def client(self):
+        if self._client is None:
+            self._client = ChatOllama(
+                model=self.GENERATIVE_MODEL,
+                num_predict=128,
+                num_ctx=2500,
+                temperature=0.2
+            )
+        return self._client
+    
+    @property
+    def client_2(self):
+        if self._client_2 is None:
+            self._client_2 = ChatGoogleGenerativeAI(
+                model=self.GENERATIVE_MODEL_2,
+                api_key=os.getenv('GOOGLE_API_KEY'),
+            )
+        return self._client_2
+    
+    @property
+    def store(self):
+        if self._store is None:
+            self._store = Chroma(
+                persist_directory=self.db_path,
+                embedding_function=self.embeddings
+            )
+        return self._store
+    
+    @store.setter
+    def store(self, value):
+        self._store = value
     
     # Classification
     def _classify_relative_path(self, file: str, relative_path: str) -> tuple[str, str, str]: 
@@ -232,12 +282,30 @@ class Sumerian():
             print(f"Error saving chunk cache: {e}")
 
     def _delete_cache_document(self): 
-        # TODO: WIP
-        pass 
+        # Reset in-memory (object) cache
+        self.document_cache = {}
+
+        # Try deleting (rewriting the cache with {}) unless exception occurs
+        try: 
+            with open(self.DOCUMENT_CACHE_PATH, 'w', encoding='utf-8') as f:
+                json.dump({}, f, indent=2)
+            return self.document_cache
+        except Exception as e:
+            print(f"Error on resetting document cache: {e}")
+            return self.document_cache
 
     def _delete_cache_chunk(self):
-        # TODO: WIP
-        pass 
+        # Reset in-memory (object) cache
+        self.chunk_cache = {}
+    
+        # Try deleting (rewriting the cache with {}) unless exception occurs
+        try: 
+            with open(self.CHUNK_CACHE_PATH, 'w', encoding='utf-8') as f:
+                json.dump({}, f, indent=2)
+            return self.chunk_cache
+        except Exception as e:
+            print(f"Error on resetting chunk cache: {e}")
+            return self.chunk_cache
 
     # Chunking
     def _chunk_typescript(self, code: str) -> list[dict]:
@@ -536,9 +604,50 @@ class Sumerian():
 
         return files_saved
     
-    def _reset_chroma(self):
-        # TODO: WIP
-        pass 
+    def _reset_chroma(self) -> dict:
+        metrics = {
+            "status":                   "in_progress",
+            "chroma_reset":             False,
+            "document_cache_reset":     False,
+            "chunk_cache_reset":        False,
+            "new_documents_cleared":    False,
+            "errors":                   []
+        } 
+
+        # chroma db deletion
+        try: 
+            self.store.delete_collection()
+            self.store = Chroma(
+                persist_directory=os.path.join(self.root_path, "server", "db"),
+                embedding_function=self.embeddings
+            )
+            metrics["chroma_reset"] = True
+        except Exception as e:
+            metrics["errors"].append(f"Chroma reset failed: {str(e)}")
+
+        # document cache deletion
+        try:
+            self._delete_cache_document()
+            metrics["document_cache_reset"] = True
+        except Exception as e:
+            metrics["errors"].append(f"Document cache reset failed: {str(e)}")
+        
+        # chunk cache deletion
+        try:
+            self._delete_cache_chunk()
+            metrics["chunk_cache_reset"] = True
+        except Exception as e:
+            metrics["errors"].append(f"Chunk cache reset failed: {str(e)}")
+        
+        # new document
+        try:
+            self.new_documents = []
+            metrics["new_documents_cleared"] = True
+        except Exception as e:
+            metrics["errors"].append(f"New documents clear failed: {str(e)}")
+        
+        metrics["status"] = "complete" if not metrics["errors"] else "partial"
+        return metrics
 
     # Response Generation
     def _generate_response(self, prompt: str) -> tuple[str, float]:
@@ -577,8 +686,8 @@ class Sumerian():
 if __name__ == "__main__":
     script_start = perf_counter()
     sumerian = Sumerian()
-    # metrics = sumerian._document_scanning()
-    question = "How is the notetaking process possible with the application?"
+    metrics = sumerian._document_scanning()
+    question = "Explain the main use case of the project like I am 5"
 
     # print("--- Scan Metrics ---")
     # pprint(metrics)
