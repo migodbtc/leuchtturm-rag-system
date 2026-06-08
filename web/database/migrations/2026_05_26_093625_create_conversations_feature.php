@@ -27,7 +27,7 @@ return new class extends Migration
 
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('conversation_id')->constrained('conversations', 'id');
+            $table->foreignId('conversation_id')->constrained('conversations', 'id')->cascadeOnDelete();
 
             $table->enum('owner', ['user', 'bot'])->default('owner');
             $table->mediumText('message');

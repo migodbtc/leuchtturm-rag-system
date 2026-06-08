@@ -1,39 +1,89 @@
 version: "3"
 
 tasks:
-  # Yellowpad Commands
+  # ── Top-level ──────────────────────────────────────────────────────────────
+  dev:
+    desc: "Start the full project (Leuchtturm + Yellowpad) — all services in parallel."
+    deps:
+      - task: leuchtturm:web:serve
+      - task: leuchtturm:web:ui
+      - task: leuchtturm:web:queue
+      - task: leuchtturm:rag:serve
+      - task: yellowpad:server:dev
+      - task: yellowpad:client:dev
+
+  # ── Leuchtturm ─────────────────────────────────────────────────────────────
+  leuchtturm:dev:
+    desc: "Start the full Leuchtturm stack: Laravel, Vite, queue worker, and RAG server."
+    deps:
+      - task: leuchtturm:web:serve
+      - task: leuchtturm:web:ui
+      - task: leuchtturm:web:queue
+      - task: leuchtturm:rag:serve
+
+  leuchtturm:web:serve:
+    desc: "Run the Laravel HTTP server (php artisan serve) on :8000."
+    dir: web
+    cmds:
+      - php artisan serve
+
+  leuchtturm:web:ui:
+    desc: "Run the Vite dev server for the Inertia/React frontend."
+    dir: web
+    cmds:
+      - pnpm dev
+
+  leuchtturm:web:queue:
+    desc: "Run the Laravel queue worker (processes RAG jobs in the background)."
+    dir: web
+    cmds:
+      - php artisan queue:work
+
+  leuchtturm:rag:serve:
+    desc: "Run the Leuchtturm FastAPI RAG server via uvicorn on :8001."
+    dir: server
+    cmds:
+      - poetry run uvicorn main:app --reload --port 8001
+
+  leuchtturm:migrate:
+    desc: "Run Laravel database migrations."
+    dir: web
+    cmds:
+      - php artisan migrate
+
+  leuchtturm:migrate:fresh:
+    desc: "Drop all tables and re-run migrations (destructive)."
+    dir: web
+    cmds:
+      - php artisan migrate:fresh
+
+  leuchtturm:tinker:
+    desc: "Open the Laravel Tinker REPL."
+    dir: web
+    cmds:
+      - php artisan tinker
+
+  # ── Yellowpad ──────────────────────────────────────────────────────────────
   yellowpad:dev:
-    desc: "Start both the FastAPI server and Next.js client concurrently."
+    desc: "Start the full Yellowpad stack: FastAPI server and Next.js client."
     deps:
       - task: yellowpad:server:dev
       - task: yellowpad:client:dev
 
   yellowpad:client:dev:
-    desc: "Start up the Nextjs development server with custom port"
+    desc: "Start the Next.js development server on :3001."
     dir: app/web
     cmds:
       - pnpm dev -p 3001
 
   yellowpad:server:dev:
-    desc: "Start the development FastAPI uvicorn server."
+    desc: "Start the Yellowpad FastAPI server via uvicorn on :8002."
     dir: app/server
     cmds:
-      - poetry run uvicorn main:app --reload
+      - poetry run uvicorn main:app --reload --port 8002
 
   yellowpad:server:test:
-    desc: "Run the preestablished server tests for quality assurance (testing environment is under tests/)."
+    desc: "Run the preestablished server tests for quality assurance."
     dir: app/server
     cmds:
       - poetry run pytest -v
-
-  leuchtturm:web:ui:
-    desc: "Run the Inertia/React.js view for Leuchtturm's web chat application."
-    dir: web
-    cmds:
-      - pnpm dev
-
-  leuchtturm:web:server:
-    desc: "Run the Laravel backend for Leuchtturm's web chat application"
-    dir: web
-    cmds:
-      - php artisan serve

@@ -86,10 +86,27 @@ async def process_query(
     try:
         query_text = payload.query
 
-        result = service._generate_response(query_text)
-        return {"status": "ok", "message": result}
+        response_text, generation_time = service._generate_response(query_text)
+        return {
+            "status": "ok",
+            "response": response_text,
+            "generation_time_seconds": generation_time,
+            "message": "Query processed successfully"
+        }
+    # database error case
+    except ValueError as e:
+        return {
+            "status": "error",
+            "error_type": "database_error",
+            "message": str(e)
+        }
+    # general error case
     except Exception as e:
-        return {"status": "error", "message": str(e)}
+        return {
+            "status": "error",
+            "error_type": "generation_error",
+            "message": str(e)
+        }
 
 
 

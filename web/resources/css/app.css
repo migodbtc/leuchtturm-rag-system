@@ -156,3 +156,54 @@
         @apply bg-background text-foreground;
     }
 }
+
+/* ── Chat message list scrollbar ─────────────────────────────────────────── */
+.message-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.message-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.message-list::-webkit-scrollbar-thumb {
+    background: #f59e0b;
+    border-radius: 3px;
+}
+
+.message-list::-webkit-scrollbar-thumb:hover {
+    background: #d97706;
+}
+
+.message-list {
+    scrollbar-color: #f59e0b transparent;
+    scrollbar-width: thin;
+}
+
+/* ── Message row entrance animation ──────────────────────────────────────── */
+@keyframes msg-slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.msg-enter {
+    animation: msg-slide-in 0.2s ease-out forwards;
+}
+
+/* ── Thinking bounce dots ────────────────────────────────────────────────── */
+@keyframes thinking-bounce {
+    0%, 80%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    40% {
+        transform: translateY(-6px);
+        opacity: 1;
+    }
+}

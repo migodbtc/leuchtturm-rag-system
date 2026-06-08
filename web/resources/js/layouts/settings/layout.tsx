@@ -18,13 +18,13 @@ const sidebarNavItems: (NavItem & { icon: React.ElementType })[] = [
         icon: KeyRound,
     },
     {
-        title: 'Conversations',
-        url: '/settings/conversations',
+        title: 'Database',
+        url: '/settings/database',
         icon: Database,
     },
     {
-        title: 'Model',
-        url: '/settings/model',
+        title: 'Account',
+        url: '/settings/account',
         icon: Bot,
     },
 ];
