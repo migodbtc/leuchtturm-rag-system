@@ -35,11 +35,12 @@ export default function NewChat() {
         try {
             const csrfToken =
                 document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ??
-                document.cookie
-                    .split('; ')
-                    .find((row) => row.startsWith('XSRF-TOKEN='))
-                    ?.split('=')[1] ??
-                '';
+                decodeURIComponent(
+                    document.cookie
+                        .split('; ')
+                        .find((row) => row.startsWith('XSRF-TOKEN='))
+                        ?.split('=')[1] ?? ''
+                );
 
             const res = await fetch('/chat', {
                 method: 'POST',

@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Lock, LogIn, User, CheckCircle, AlertCircle, X } from "lucide-react";
 import { loginAction } from "../actions";
@@ -21,6 +22,7 @@ export default function LoginPage() {
     message: null,
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (state.message) {
@@ -33,10 +35,13 @@ export default function LoginPage() {
       return;
     }
 
+    // Write the cookie first, THEN navigate — this guarantees the token is
+    // available in document.cookie before any authenticated page fetch runs.
     const secure = window.location.protocol === "https:" ? "; Secure" : "";
     const token = encodeURIComponent(state.token);
     document.cookie = `access_token=${token}; Path=/; Max-Age=900; SameSite=Lax${secure}`;
-  }, [state.ok, state.token]);
+    router.push("/home/dash");
+  }, [state.ok, state.token, router]);
 
   const SubmitButton = () => {
     const { pending } = useFormStatus();
@@ -172,8 +177,9 @@ export default function LoginPage() {
 
             <div className="mt-6 flex flex-wrap gap-3">
               {state.ok ? (
-                <Link
-                  href="/home/dash"
+                <button
+                  type="button"
+                  onClick={() => router.push("/home/dash")}
                   className="w-full cursor-pointer rounded-xl px-4 py-2 text-center text-sm font-semibold text-white"
                   style={{
                     backgroundImage:
@@ -181,7 +187,7 @@ export default function LoginPage() {
                   }}
                 >
                   Continue to dashboard
-                </Link>
+                </button>
               ) : (
                 <button
                   type="button"

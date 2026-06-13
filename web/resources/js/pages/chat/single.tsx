@@ -198,13 +198,15 @@ function MessageComposer({
 
         try {
             // Prefer the meta tag; fall back to the XSRF-TOKEN cookie Laravel sets
+            // Note: Laravel URL-encodes the XSRF-TOKEN cookie, so it must be decoded.
             const csrfToken =
                 document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ??
-                document.cookie
-                    .split('; ')
-                    .find((row) => row.startsWith('XSRF-TOKEN='))
-                    ?.split('=')[1] ??
-                '';
+                decodeURIComponent(
+                    document.cookie
+                        .split('; ')
+                        .find((row) => row.startsWith('XSRF-TOKEN='))
+                        ?.split('=')[1] ?? ''
+                );
 
             const res = await fetch(`/chat/${conversationId}/message`, {
                 method: 'POST',
