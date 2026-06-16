@@ -205,7 +205,7 @@ export default function CreditsPage() {
                   Stephen Menguito
                 </td>
                 <td className="p-0 w-1/2 text-right">
-                  Dailies Dev · Relax Engineer
+                  QA Support
                 </td>
               </tr>
             </tbody>
